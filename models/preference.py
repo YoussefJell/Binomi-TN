@@ -11,7 +11,7 @@ from sqlalchemy.orm import relationship
 class Preference(BaseModel, Base):
     """Representation of Preference """
     if models.storage_t == 'db':
-        __tablename__ = 'amenities'
+        __tablename__ = 'preferences'
         name = Column(String(128), nullable=False)
     else:
         name = ""
