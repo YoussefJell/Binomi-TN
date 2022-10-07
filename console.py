@@ -12,9 +12,9 @@ import shlex  # for splitting the line along spaces except in double quotes
 classes = {"Preference": Preference, "BaseModel": BaseModel, "User": User}
 
 
-class HBNBCommand(cmd.Cmd):
+class BINOMICommand(cmd.Cmd):
     """ HBNH console """
-    prompt = '(hbnb) '
+    prompt = '(binomi) '
 
     def do_EOF(self, arg):
         """Exits console"""
@@ -157,4 +157,4 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    HBNBCommand().cmdloop()
+    BINOMICommand().cmdloop()
