@@ -17,20 +17,20 @@ def close_db(error):
     storage.close()
 
 
-@app.route('/home', strict_slashes=False)
+@app.route('/', strict_slashes=False)
 def binomi():
     """ Binomi is alive! """
-    users = storage.all(User).values()
-    users = sorted(users, key=lambda k: k.name)
-    st_ct = []
+    #users = storage.all(User).values()
+    #users = sorted(users, key=lambda k: k.name)
+    #st_ct = []
 
-    for user in users:
-        st_ct.append([user, sorted(user.preferences, key=lambda k: k.name)])
+    #for user in users:
+    #    st_ct.append([user, sorted(user.preferences, key=lambda k: k.name)])
 
-    preferences = storage.all(Preference).values()
-    preferences = sorted(preferences, key=lambda k: k.name)
+    #preferences = storage.all(Preference).values()
+    #preferences = sorted(preferences, key=lambda k: k.name)
 
-    return render_template('home.html',users=users, preferences=preferences, cache_id=uuid.uuid4())
+    return render_template('home.html', cache_id=uuid.uuid4())
 
 
 if __name__ == "__main__":
