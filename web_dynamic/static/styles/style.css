@@ -82,9 +82,27 @@ body {      background:
 }
 
 colWrapper {
-  margin:0 auto;
+  margin:2 auto;
 }
 .column {
   width:33%;
   float:left;
 }
+.container{
+  margin-top:5px;
+}
+
+.btn:hover{
+  color:#f8c165;
+}
+
+.input-text:focus{
+  box-shadow: 0px 0px 0px;
+  border-color:#f8c146;
+  outline: 0px;
+}
+
+.form-control {
+  border: 1px solid #f8c146;
+}
+
