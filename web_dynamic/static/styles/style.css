@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 /* styling for the Pen, unrelated to background */
-body {      background: 
-  url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png) repeat; 
+body {      background:
+  url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png) repeat;
 }
 #menu__toggle {
   opacity: 0;
@@ -120,4 +120,60 @@ colWrapper {
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
+}
+.cards-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  grid-gap: 50px;
+  margin-top: 20px;
+  margin-left: 13%;
+  margin-right: 2%;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-content:space-between;
+  width: 300;
+  height: 290;
+  border: 1px solid #CAD0D2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card__description {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+  padding: 15px 0;
+}
+
+.card__descriptionIcon {
+  font-size: 32px;
+  margin-bottom: 140px;
+}
+
+.card__descriptionText {
+  color: #57727C;
+  font-size: 12px;
+  text-align: center;
+  max-width: calc(100% - 30px);
+}
+
+.card__price {
+  text-align: center;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 25px;
+  align-items: flex-end;
+  border-top: 1px solid #D7DBDD;
+  background-color: #F1E19C;
+}
+
+.card--fixedWidth {
+  max-width: 500px;
 }
