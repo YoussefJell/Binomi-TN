@@ -122,12 +122,13 @@ colWrapper {
   font-size: 20px;
 }
 .cards-wrapper {
+  width: 250%;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   grid-gap: 50px;
   margin-top: 20px;
-  margin-left: 13%;
+  margin-left: -40%;
   margin-right: 2%;
 }
 .card {
