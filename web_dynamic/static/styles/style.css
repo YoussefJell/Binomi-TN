@@ -28,7 +28,7 @@ body {      background:
   width: 26px;
   height: 26px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 2;
 }
 .menu__btn > span,
 .menu__btn > span::before,
@@ -47,16 +47,19 @@ body {      background:
 }
 .menu__btn > span::before {
   content: '';
+  z-index: 2;
   top: -8px;
 }
 .menu__btn > span::after {
   content: '';
+  z-index: 2;
   top: 8px;
 }
 .menu__box {
   display: block;
   position: fixed;
   top: 0;
+  z-index: 1;
   left: -100%;
   width: 300px;
   height: 100%;
@@ -81,7 +84,7 @@ body {      background:
   background-color: #ebbc46;
 }
 
-colWrapper {
+.colWrapper {
   margin:2 auto;
 }
 .column {
