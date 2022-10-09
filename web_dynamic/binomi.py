@@ -1,14 +1,20 @@
 #!/usr/bin/python3
 """ Starts a Flash Web Application """
-from models import storage
 from models.user import User
 from models.preference import Preference
+from models import storage
 from os import environ
 import uuid
 from flask import Flask, render_template
+from web_dynamic.auth import auth
+
 app = Flask(__name__)
+#secret key for the app, it encrypts cookies
+app.config['SECRET_KEY'] = 'dasd13 dream team 12fqwt'
+
 # app.jinja_env.trim_blocks = True
 # app.jinja_env.lstrip_blocks = True
+app.register_blueprint(auth, url_prefix='/')
 
 
 @app.teardown_appcontext

@@ -23,6 +23,7 @@ class Preference(BaseModel, Base):
     """Representation of Preference """
     if models.storage_t == 'db':
         __tablename__ = 'preferences'
+        user_id = Column(String(60), ForeignKey('users.id'), nullable=False) 
         name = Column(String(128), nullable=False)
         description = Column(String(1024), nullable=True)
         users = relationship("User",
