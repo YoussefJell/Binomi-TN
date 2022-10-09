@@ -1,8 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 /* styling for the Pen, unrelated to background */
-body {      background:
-  url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png) repeat;
+body {
+  background-color: #0D1524;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 #menu__toggle {
   opacity: 0;
@@ -66,14 +69,14 @@ body {      background:
   margin: 0;
   padding: 80px 0;
   list-style: none;
-  background-color: #ECEFF1;
-  box-shadow: 2px 2px 6px #f1d283;
+  background-color: #1B2332;
+  box-shadow: 2px 2px 6px #ebbc46;
   transition-duration: .30s;
 }
 .menu__item {
   display: block;
   padding: 12px 24px;
-  color: #333;
+  color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 600;
@@ -81,6 +84,7 @@ body {      background:
   transition-duration: .25s;
 }
 .menu__item:hover {
+  color: #1B2332;
   background-color: #ebbc46;
 }
 
@@ -103,7 +107,9 @@ body {      background:
 }
 .searchTerm {
   width: 100%;
-  border: 3px solid #ebbc46;
+  background-color: #1B2332;
+  color: #ebbc46;
+  border: 2px solid #ebbc46;
   border-right: none;
   padding: 5px;
   height: 36px;
@@ -111,15 +117,15 @@ body {      background:
   outline: none;
 }
 .searchTerm:focus {
-  color: #380136;
+  color: #FFFFFF;
 }
 .searchButton {
   width: 40px;
   height: 36px;
-  border: 1px solid #ebbc46;
-  background: #ebbc46;
+  border: 2px solid #ebbc46;
+  background: #1B2332;
   text-align: center;
-  color: #eeeeee;
+  color: #ebbc46;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
@@ -130,23 +136,24 @@ body {      background:
   flex-flow: row wrap;
   justify-content: flex-start;
   grid-gap: 50px;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-left: -40%;
   margin-right: 2%;
 }
 .card {
+  background-color: #1B2332;
   display: flex;
   flex-direction: column;
   align-content:space-between;
   width: 300;
   height: 290;
-  border: 1px solid #CAD0D2;
+  border: 1px solid #ebbc46;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .card__description {
-
+  background-color: #1B2332;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -161,7 +168,7 @@ body {      background:
 }
 
 .card__descriptionText {
-  color: #57727C;
+  color: #FFFFFF;
   font-size: 12px;
   text-align: center;
   max-width: calc(100% - 30px);
@@ -169,13 +176,14 @@ body {      background:
 
 .card__price {
   text-align: center;
-  color: #000000;
+  color: #1B2332;
   font-size: 12px;
   font-weight: 700;
-  padding: 25px;
+  margin-top: 35px;
+  padding: 5px 25px;
   align-items: flex-end;
-  border-top: 1px solid #D7DBDD;
-  background-color: #F1E19C;
+  border-top: 2px solid #2e323d;
+  background-color: #29cb7b;
 }
 
 .card--fixedWidth {
