@@ -195,26 +195,3 @@
 .card--fixedWidth {
   max-width: 500px;
 }
-
-.card__descriptionText {
-  color: #FFFFFF;
-  font-size: 12px;
-  text-align: center;
-  max-width: calc(100% - 30px);
-}
-
-.card__price {
-  text-align: center;
-  color: #1B2332;
-  font-size: 12px;
-  font-weight: 700;
-  margin-top: 35px;
-  padding: 5px 25px;
-  align-items: flex-end;
-  border-top: 2px solid #2e323d;
-  background-color: #29cb7b;
-}
-
-.card--fixedWidth {
-  max-width: 500px;
-}
