@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 body {
+  background: #f6f5f7;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -171,7 +172,7 @@ body {
   height: 290;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
 
 }
 
@@ -218,7 +219,8 @@ body {
   background-color: #FFDD3C;
   border: none;
   border-radius: 30px;
-  font-size: 16px;
+  font-size: 14px;
+	font-weight: bold;
   color: #000000;
   padding: 10px;
   width: 110px;
@@ -230,7 +232,7 @@ body {
   cursor: pointer;
   margin-top: 1px;
   margin-left: 15px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .Signin-up:after {
@@ -257,7 +259,7 @@ body {
   display: grid;
   grid-template-columns: 500px 1fr;
   grid-template-rows: 150px 1fr;
-  background: #ffffff;
+  background: #f6f5f7;
   width: 80vw;
   height: 3vw;
   margin-top:1%;
@@ -267,7 +269,7 @@ body {
 .child {
   grid-area: 1 / 2 / 2 / 1;
   height: 80px;
-  background: #ffffff;
+  background: #f6f5f7;
   width: 750px;
 }
 
