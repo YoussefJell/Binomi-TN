@@ -4,6 +4,10 @@
 	box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
 	background: #f6f5f7;
 	display: flex;
