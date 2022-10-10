@@ -77,7 +77,7 @@
 }
 
 .change #bar1 {
-  transform: translateY(4px) rotateZ(-45deg);
+  transform: translateY(3px) rotateZ(-45deg);
 }
 
 .change #bar2 {
@@ -85,7 +85,7 @@
 }
 
 .change #bar3 {
-  transform: translateY(-6px) rotateZ(45deg);
+  transform: translateY(-5px) rotateZ(45deg);
 }
 
 .change-bg {
@@ -110,10 +110,12 @@
   display: flex;
   justify-content: center;
   margin-left: 35%;
-  margin-top: 10px;
+  margin-top: 1%;
   min-width: 100px;
   max-width: 500px;
   position: relative;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+
 }
 .searchTerm {
   width: 100%;
@@ -154,9 +156,10 @@
   align-content:space-between;
   width: 300;
   height: 290;
-  border: 1px solid #222;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
 }
 
 .card__description {
@@ -194,4 +197,67 @@
 
 .card--fixedWidth {
   max-width: 500px;
+}
+
+.Signin-up {
+  
+  position: relative;
+  background-color: #FFDD3C;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  color: #000000;
+  padding: 10px;
+  width: 110px;
+  height: 45;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  margin-top: 1px;
+  margin-left: 15px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Signin-up:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.Signin-up:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  grid-template-rows: 150px 1fr;
+  background: #ffffff;
+  width: 80vw;
+  height: 3vw;
+  margin-top:1%;
+  margin-left:18%;
+}
+
+.child {
+  grid-area: 1 / 2 / 2 / 1;
+  height: 80px;
+  background: #ffffff;
+  width: 750px;
+}
+
+.child2 {
+  margin-left: 85%;
 }

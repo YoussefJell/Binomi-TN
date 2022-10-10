@@ -19,7 +19,6 @@
 </head>
 
 <body>
-  <div class="colWrapper">
     <div class="column">
       <div id="menu">
         <div id="menu-bar" onclick="menuOnClick()">
@@ -39,14 +38,22 @@
 
       <div class="menu-bg" id="menu-bg"></div>
     </div>
-
+    <div class="parent">
+<div class="child">
     <div class="search">
       <input type="text" class="searchTerm" placeholder="Binomi">
       <button type="submit" class="searchButton">
         <i class="fa fa-search"></i>
       </button>
+    </div>
+    </div>
+    <div class="child2">
+      <button class="Signin-up " onclick="window.location.href = 'http://127.0.0.1:5500/web_dynamic/templates/login';">Sign-in/up</button>
 
     </div>
+  </div>
+
+    
     <div class="cards-wrapper">
       <div class="card card--fixedWidth">
         <div class="card__description">
