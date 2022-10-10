@@ -17,7 +17,7 @@ def login():
     if request.method == 'POST':
      email = request.form.get('email')
      password = request.form.get('password')
-     return redirect(url_for('binomi', member=current_user))
+     return redirect(url_for('binomi',  user=current_user.get_id()))
      
      found = False
      storage.reload()
@@ -92,7 +92,7 @@ def sign_up():
         else:
             new_user = User(email=email, password=generate_password_hash(password1, method='sha256'), first_name=first_name, last_name=last_name)
             new_user.save()
-            #login_user(new_user, remember=True)
+            login_user(new_user, remember=True)
             flash('Account created!', category='success')
         
             return redirect(url_for("binomi"))
