@@ -14,87 +14,87 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../static/styles/style.css" />
+  <script src="../static/scripts/menuclick.js"></script>
 </head>
 
 <body>
   <div class="colWrapper">
     <div class="column">
-      <div class="hamburger-menu">
-        <input id="menu__toggle" type="checkbox" />
-        <label class="menu__btn" for="menu__toggle">
-          <span></span>
-        </label>
-
-        <ul class="menu__box">
-          <li><a class="menu__item" href="#">Home</a></li>
-          <li><a class="menu__item" href="#">About</a></li>
-          <li><a class="menu__item" href="#">Team</a></li>
-          <li><a class="menu__item" href="#">Contact</a></li>
-          <li><a class="menu__item" href="#">Twitter</a></li>
-        </ul>
-
+      <div id="menu">
+        <div id="menu-bar" onclick="menuOnClick()">
+          <div id="bar1" class="bar"></div>
+          <div id="bar2" class="bar"></div>
+          <div id="bar3" class="bar"></div>
+        </div>
+        <nav class="nav" id="nav">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </nav>
       </div>
+
+      <div class="menu-bg" id="menu-bg"></div>
     </div>
 
-    <div class="column">
-      <div class="container">
-        <div class="search">
-          <input type="text" class="searchTerm" placeholder="Binomi">
-          <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-          </button>
+    <div class="search">
+      <input type="text" class="searchTerm" placeholder="Binomi">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+      </button>
+
+    </div>
+    <div class="cards-wrapper">
+      <div class="card card--fixedWidth">
+        <div class="card__description">
+          <div class="icon fa fa-flask card__descriptionIcon"></div>
+          <div class="card__descriptionText">Science potion</div>
         </div>
-        <div class="cards-wrapper">
-          <div class="card card--fixedWidth">
-            <div class="card__description">
-              <div class="icon fa fa-flask card__descriptionIcon"></div>
-              <div class="card__descriptionText">Science potion</div>
-            </div>
-            <div class="card__price">Costs $5</div>
-          </div>
-          <div class="card card--fixedWidth">
-            <div class="card__description">
-              <div class="icon fa fa-flask card__descriptionIcon"></div>
-              <div class="card__descriptionText">Science potion</div>
-            </div>
-            <div class="card__price">Costs $5</div>
-          </div>
-          <div class="card card--fixedWidth">
-            <div class="card__description">
-              <div class="icon fa fa-flask card__descriptionIcon"></div>
-              <div class="card__descriptionText">Science potion</div>
-            </div>
-            <div class="card__price">Costs $5</div>
-          </div>
-          <div class="card card--fixedWidth">
-            <div class="card__description">
-              <div class="icon fa fa-flask card__descriptionIcon"></div>
-              <div class="card__descriptionText">Science potion</div>
-            </div>
-            <div class="card__price">Costs $5</div>
-          </div>
-          <div class="card card--fixedWidth">
-            <div class="card__description">
-              <div class="icon fa fa-flask card__descriptionIcon"></div>
-              <div class="card__descriptionText">Science potion</div>
-            </div>
-            <div class="card__price">Costs $5</div>
-          </div>
-          <div class="card card--fixedWidth">
-            <div class="card__description">
-              <div class="icon fa fa-flask card__descriptionIcon"></div>
-              <div class="card__descriptionText">Science potion</div>
-            </div>
-            <div class="card__price">Costs $5</div>
-          </div>
-          <div class="card card--fixedWidth">
-            <div class="card__description">
-              <div class="icon fa fa-flask card__descriptionIcon"></div>
-              <div class="card__descriptionText">Science potion</div>
-            </div>
-            <div class="card__price">Costs $5</div>
-          </div>
+        <div class="card__price">Costs $5</div>
+      </div>
+      <div class="card card--fixedWidth">
+        <div class="card__description">
+          <div class="icon fa fa-flask card__descriptionIcon"></div>
+          <div class="card__descriptionText">Science potion</div>
         </div>
+        <div class="card__price">Costs $5</div>
+      </div>
+      <div class="card card--fixedWidth">
+        <div class="card__description">
+          <div class="icon fa fa-flask card__descriptionIcon"></div>
+          <div class="card__descriptionText">Science potion</div>
+        </div>
+        <div class="card__price">Costs $5</div>
+      </div>
+      <div class="card card--fixedWidth">
+        <div class="card__description">
+          <div class="icon fa fa-flask card__descriptionIcon"></div>
+          <div class="card__descriptionText">Science potion</div>
+        </div>
+        <div class="card__price">Costs $5</div>
+      </div>
+      <div class="card card--fixedWidth">
+        <div class="card__description">
+          <div class="icon fa fa-flask card__descriptionIcon"></div>
+          <div class="card__descriptionText">Science potion</div>
+        </div>
+        <div class="card__price">Costs $5</div>
+      </div>
+      <div class="card card--fixedWidth">
+        <div class="card__description">
+          <div class="icon fa fa-flask card__descriptionIcon"></div>
+          <div class="card__descriptionText">Science potion</div>
+        </div>
+        <div class="card__price">Costs $5</div>
+      </div>
+      <div class="card card--fixedWidth">
+        <div class="card__description">
+          <div class="icon fa fa-flask card__descriptionIcon"></div>
+          <div class="card__descriptionText">Science potion</div>
+        </div>
+        <div class="card__price">Costs $5</div>
       </div>
     </div>
 
