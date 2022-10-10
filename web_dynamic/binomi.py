@@ -7,6 +7,8 @@ from os import environ
 import uuid
 from flask import Flask, render_template
 from web_dynamic.auth import auth
+from flask_login import LoginManager
+
 
 app = Flask(__name__)
 #secret key for the app, it encrypts cookies
@@ -17,13 +19,21 @@ app.config['SECRET_KEY'] = 'dasd13 dream team 12fqwt'
 app.register_blueprint(auth, url_prefix='/')
 
 
+login_manager = LoginManager()
+login_manager.login_view = 'auth.login'
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(id):
+    return storage.get(User, id)
+
 @app.teardown_appcontext
 def close_db(error):
     """ Remove the current SQLAlchemy Session """
     storage.close()
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/', strict_slashes=False, methods=["GET", "POST"])
 def binomi():
     """ Binomi is alive! """
     #users = storage.all(User).values()
