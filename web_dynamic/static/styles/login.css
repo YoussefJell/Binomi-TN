@@ -1,5 +1,30 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
+
+.alert_error {
+	padding: 20px;
+	background-color: #f44336;
+	color: white;
+	box-shadow:0 0 15px 5px #ccc;
+
+  }
+  
+  .closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+	color: black;
+  }
+
+
 * {
 	box-sizing: border-box;
 }

@@ -30,7 +30,12 @@
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          {% if current_user.is_authenticated is false %}
+            <li><a href="/login">Sign-in/up</a></li>
+          {% else %}
+            <li><a href="#">Profile</a></li>
+            <li><a href="/logout">logout</a></li>
+          {% endif %}
           <li><a href="#">Blog</a></li>
         </ul>
       </nav>
@@ -47,12 +52,17 @@
         </button>
       </div>
     </div>
+    {% if current_user.is_authenticated is false %}
+      <div class="child2">
+        <button class="Signin-up " onclick="window.location.href='/login';">Sign-in/up</button>
+      </div>
+    
+    {% else %}
     <div class="child2">
-      <button class="Signin-up " onclick="window.location.href='/login';">Log-in</button>
-
+      <button class="logout " onclick="window.location.href='/logout';">Logout</button>
     </div>
+    {% endif %}
   </div>
-
 
   <div class="cards-wrapper">
     <div class="card card--fixedWidth">

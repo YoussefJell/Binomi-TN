@@ -34,6 +34,6 @@ class User(UserMixin, BaseModel, Base):
 
     def __setattr__(self, name, value):
         """sets a password with md5 encryption"""
-        if name == "password":
-            value = generate_password_hash(value, method='sha256')
+        #if name == "password":
+            #value = 
         super().__setattr__(name, value)
