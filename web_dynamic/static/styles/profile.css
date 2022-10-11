@@ -1,13 +1,15 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: "Open Sans",sans-serif;
+    font-family: "Montserrat", sans-serif;
     box-sizing: border-box;
     text-decoration: none;
+
   }
    
   body{
-    background: url(bg.jpg) no-repeat center;
+    background: #f6f5f7;
+    z-index: 1;
     background-size: cover;
     min-height: 100vh;
     display: flex;
@@ -18,7 +20,7 @@
   .profile-card{
     width: 80%;
     height: 100%;
-    overflow: hidden;
+    overflow: visible;
     text-align: center;
     box-shadow: 0 0 5px #00000070;
   }
@@ -26,8 +28,8 @@
   .top-section{
     z-index: 1;
     padding: 50px 40px;
-    height: 100px;
-    background: #FF8066;
+    height: 180px;
+    background: #FFD400;
   }
    
   .message,.notif{
@@ -47,12 +49,12 @@
   }
    
   .pic{
-    align-content: flex-start;
     z-index: 2;
-    width: 400px;
-    height: 400px;
-    margin: auto;
-    margin-bottom: 20px;
+    width: 150px;
+    height: 150px;
+    margin-top: -120px;
+    margin-left: 2%;
+    margin-right: 80%;
     border: 2px solid #141414;
     border-radius: 50%;
     padding: 80px;
@@ -64,7 +66,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    border: 1px solid #FF6D51;
+    border: 1px solid #FFD400;
     left: 0;
     top: 0;
     box-sizing: border-box;
@@ -84,6 +86,7 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    
 
   }
    
@@ -92,6 +95,7 @@
     font-size: 28px;
     letter-spacing: 2px;
     text-transform: uppercase;
+    margin-top: -50px;
   }
    
   .tag{
@@ -133,12 +137,12 @@
   .social-media i{
     width: 60px;
     height: 60px;
-    background: #FF6D51;
+    background: #ffdd32;
     border-radius: 50%;
-    color: #f1f1f1;
+    color: #000000;
     font-size: 20px;
     line-height: 60px !important;
-    margin: 0 10px;
+    margin-right: 2%;
     position: relative;
   }
    
@@ -147,7 +151,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background: #FF6D51;
+    background: #FFD400;
     left: 0;
     top: 0;
     box-sizing: border-box;
