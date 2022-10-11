@@ -19,7 +19,10 @@
 </head>
 
 <body>
-  <div class="column">
+
+
+  <div class="parent">
+    <div class="menu-bg" id="menu-bg"></div>
     <div id="menu">
       <div id="menu-bar" onclick="menuOnClick()">
         <div id="bar1" class="bar"></div>
@@ -31,19 +34,14 @@
           <li><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           {% if current_user.is_authenticated is false %}
-            <li><a href="/login">Sign-in/up</a></li>
+          <li><a href="/login">Sign-in/up</a></li>
           {% else %}
-            <li><a href="#">Profile</a></li>
-            <li><a href="/logout">logout</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="/logout">Log out</a></li>
           {% endif %}
-          <li><a href="#">Blog</a></li>
         </ul>
       </nav>
     </div>
-
-    <div class="menu-bg" id="menu-bg"></div>
-  </div>
-  <div class="parent">
     <div class="child">
       <div class="search">
         <input type="text" class="searchTerm" placeholder="Binomi">
@@ -53,13 +51,13 @@
       </div>
     </div>
     {% if current_user.is_authenticated is false %}
-      <div class="child2">
-        <button class="Signin-up " onclick="window.location.href='/login';">Sign-in/up</button>
-      </div>
-    
+    <div class="child2">
+      <button class="Signin-up " onclick="window.location.href='/login';">Log In</button>
+    </div>
+
     {% else %}
     <div class="child2">
-      <button class="logout " onclick="window.location.href='/logout';">Logout</button>
+      <button class="Signin-up " onclick="window.location.href='/logout';">Log out</button>
     </div>
     {% endif %}
   </div>
