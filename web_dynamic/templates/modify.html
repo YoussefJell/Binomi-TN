@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>modify</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"
+    />
+    <link rel="stylesheet" href="../static/styles/modify.css" />
+
+    <link
+      rel="import"
+      href="https://rawgit.com/sitepoint-editors/multiselect-web-component/master/src/multiselect.html"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.22/webcomponents.js"></script>
+    <script src="../static/scripts/modify.css"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="title">Modify Your Profile</h1>
+
+      <div class="grid">
+        <div class="form-group a">
+          <label for="fname">First Name</label>
+          <input id="fname" type="text" />
+        </div>
+
+        <div class="form-group b">
+          <label for="filname">Last Name</label>
+          <input id="lname" type="text" />
+        </div>
+
+        <div class="form-group phone-group">
+          <label for="phone">Phone Number</label>
+          <input id="phone" type="text" />
+        </div>
+
+        <div class="textarea-group bio" >
+          <label for="bio">Bio</label>
+          <textarea id="bio"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="filname">Budget</label>
+          <input id="lname" type="number" min="1" />
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <select>
+            <option class="city">Ariana</option>
+            <option class="city">Mourouj</option>
+          </select>
+        </div>
+        <section>
+          <label for="preferences">Preferences (Your Habits)</label>
+          <div id="container">
+            <x-multiselect placeholder="Select Value">
+              <li value="1" selected>Non-Smoker</li>
+              <li value="2">Smoker</li>
+              <li value="3">Light Sleeper</li>
+              <li value="4">Heavy Sleeper</li>
+              <li value="5">I frequently have guests</li>
+              <li value="6">I rarely have guests</li>
+              <li value="7">I never have guests</li>
+              <li value="8">I am okay with my roommate bringing guests</li>
+              <li value="9">I am NOT okay with my roommate bringing guests</li>
+              <li value="10">Russia</li>
+              <li value="11">United States</li>
+            </x-multiselect>
+          </div>
+        </section>
+      </div>
+
+      <div class="button-container">
+        <button class="button">Save</button>
+      </div>
+    </div>
+  </body>
+</html>

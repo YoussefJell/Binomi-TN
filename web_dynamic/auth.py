@@ -105,3 +105,8 @@ def sign_up():
             return redirect(url_for("binomi"))
 
     return render_template("login.html")
+
+
+@auth.route('/modify-profile',  strict_slashes=False)
+def modify():
+    return render_template ('modify.html')
