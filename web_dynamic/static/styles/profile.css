@@ -164,3 +164,14 @@
     transform: scale(1.4);
     opacity: 0;
   }
+
+  .button {
+	border-radius: 20px;
+	border: 1px solid #ffd400;
+	background-color: #ffea61;
+	color: #222;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+  }
