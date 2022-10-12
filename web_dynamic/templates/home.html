@@ -64,12 +64,12 @@
     </div>
     {% if current_user.is_authenticated is false %}
     <div class="child2">
-      <button class="Signin-up " onclick="window.location.href='/login';">Sign-in/up</button>
+      <button class="Signin-up " onclick="window.location.href='/login';">Log In</button>
     </div>
 
     {% else %}
     <div class="child2">
-      <button class="Signin-up " onclick="window.location.href='/logout';">Logout</button>
+      <button class="Signin-up " onclick="window.location.href='/logout';">Log Out</button>
     </div>
     {% endif %}
   </div>
