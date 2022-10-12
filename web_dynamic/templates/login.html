@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
 	<link rel="stylesheet" href="../static/styles/footer.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-signin-client_id" content="161577123230-9m8jtjpogoledep0a6dner8ej8i6f9he.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </head>
 
@@ -29,6 +31,7 @@
 			<form action="/sign-up" enctype="multipart/form-data" method="POST">
 				<h1>Create Account</h1>
 				<div class="social-container">
+					<div class="g-signin2" data-onsuccess="onSignIn"></div>
 					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
 					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
@@ -47,6 +50,7 @@
 			<form action="/login" enctype="multipart/form-data" method="POST">
 				<h1>Sign In</h1>
 				<div class="social-container">
+					<div class="g-signin2" data-onsuccess="onSignIn"></div>
 					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
 					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>

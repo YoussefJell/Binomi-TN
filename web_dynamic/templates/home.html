@@ -20,10 +20,7 @@
 </head>
 
 <body>
-
-
-  <div class="parent">
-    <div class="menu-bg" id="menu-bg"></div>
+  <div class="column">
     <div id="menu">
       <div id="menu-bar" onclick="menuOnClick()">
         <div id="bar1" class="bar"></div>
@@ -35,14 +32,18 @@
           <li><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           {% if current_user.is_authenticated is false %}
-          <li><a href="/login">Sign-in/up</a></li>
+          <li><a href="/login">Log In</a></li>
           {% else %}
           <li><a href="#">Profile</a></li>
-          <li><a href="/logout">Log out</a></li>
+          <li><a href="/logout">Log Out</a></li>
           {% endif %}
         </ul>
       </nav>
     </div>
+
+    <div class="menu-bg" id="menu-bg"></div>
+  </div>
+  <div class="parent">
     <div class="child">
       <div class="search">
         <div class="searchTerm">
@@ -68,7 +69,7 @@
 
     {% else %}
     <div class="child2">
-      <button class="Signin-up " onclick="window.location.href='/logout';">Log out</button>
+      <button class="Signin-up " onclick="window.location.href='/logout';">Log Out</button>
     </div>
     {% endif %}
   </div>
