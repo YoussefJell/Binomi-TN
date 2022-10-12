@@ -107,6 +107,23 @@ def sign_up():
     return render_template("login.html")
 
 
+@auth.route('/profile', strict_slashes=False, methods=['GET', 'POST'])
+def profile():
+    if request.method == 'POST':
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+        budget = request.form.get('budget')
+        bio = request.form.get('bio')
+        preferences = request.form.get('select_preferences')
+        sex = request.form.get('select_sex')
+        print(first_name, sex, preferences)
+        print(request.form)
+
+       
+    
+    return render_template('profile.html')
+
+
 @auth.route('/modify-profile',  strict_slashes=False)
 def modify():
     return render_template ('modify.html')
