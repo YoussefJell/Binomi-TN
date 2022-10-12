@@ -7,6 +7,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"
     />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
     <link rel="stylesheet" href="../static/styles/modify.css" />
 
     <link
@@ -15,6 +18,9 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.22/webcomponents.js"></script>
     <script src="../static/scripts/modify.css"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
   </head>
 
   <body>
@@ -28,34 +34,66 @@
         </div>
 
         <div class="form-group b">
-          <label for="filname">Last Name</label>
+          <label for="lname">Last Name</label>
           <input id="lname" type="text" />
         </div>
 
         <div class="form-group phone-group">
           <label for="phone">Phone Number</label>
-          <input id="phone" type="text" />
+          <input id="phone" type="text" required/>
         </div>
 
         <div class="textarea-group bio" >
           <label for="bio">Bio</label>
-          <textarea id="bio"></textarea>
+          <textarea id="bio" required></textarea>
         </div>
         <div class="form-group">
-          <label for="filname">Budget</label>
-          <input id="lname" type="number" min="1" />
+          <label for="budget" >Budget (Per Month)</label>
+          <input id="budget" type="number" min="1" pattern="[0-9]" required/>
         </div>
+
         <div class="form-group">
-          <label for="location">Location</label>
-          <select>
-            <option class="city">Ariana</option>
-            <option class="city">Mourouj</option>
-          </select>
+          <label for="location"> Location </label>
+          <label class="select" for="slct">
+            <select id="slct" required="required">
+              <option value="" disabled="disabled" selected="selected">Select option</option>
+              <option value="#">One</option>
+              <option value="#">Two</option>
+            </select>
+            <svg>
+              <use xlink:href="#select-arrow-down"></use>
+            </svg>
+          </label>
+            <svg class="sprites">
+            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+              <polyline points="1 1 5 5 9 1"></polyline>
+            </symbol>
+            </svg>
         </div>
-        <section>
-          <label for="preferences">Preferences (Your Habits)</label>
+
+        <div class="form-group">
+          <label for="location"> Sex </label>
+          <label class="select" for="slct">
+            <select id="slct" required="required">
+              <option value="" disabled="disabled" selected="selected">Select option</option>
+              <option value="#">Male</option>
+              <option value="#">Female</option>
+            </select>
+            <svg>
+              <use xlink:href="#select-arrow-down"></use>
+            </svg>
+          </label>
+            <svg class="sprites">
+            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+              <polyline points="1 1 5 5 9 1"></polyline>
+            </symbol>
+            </svg>
+        </div>
+
+        <section class="pref">
+          <label id='preferences' for="preferences">Preferences (Your Habits)</label>
           <div id="container">
-            <x-multiselect placeholder="Select Value">
+            <x-multiselect placeholder="Select Value" required>
               <li value="1" selected>Non-Smoker</li>
               <li value="2">Smoker</li>
               <li value="3">Light Sleeper</li>
@@ -73,7 +111,7 @@
       </div>
 
       <div class="button-container">
-        <button class="button">Save</button>
+        <button class="button" type="submit">Save</button>
       </div>
     </div>
   </body>
