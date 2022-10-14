@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Index """
+from models.location import Location
 from models.preference import Preference
 from models.user import User
 from models import storage
@@ -16,8 +17,8 @@ def status():
 @app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def number_objects():
     """ Retrieves the number of each objects by type """
-    classes = [Preference, User]
-    names = ["preferences", "users"]
+    classes = [Preference, User, Location]
+    names = ["preferences", "users", "locations"]
 
     num_objs = {}
     for i in range(len(classes)):

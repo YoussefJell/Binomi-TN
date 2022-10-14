@@ -5,12 +5,14 @@ Contains the FileStorage class
 
 import json
 import models
+from models.location import Location
 from models.preference import Preference
 from models.base_model import BaseModel
 from models.user import User
 from hashlib import md5
 
-classes = {"Preference": Preference, "BaseModel": BaseModel, "User": User}
+classes = {"Location": Location, "Preference": Preference,
+           "BaseModel": BaseModel, "User": User}
 
 
 class FileStorage:

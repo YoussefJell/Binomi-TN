@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ objects that handle all default RestFul API actions for Users """
+from models.location import Location
 from models.user import User
 from models import storage
 from api.v1.views import app_views
@@ -87,3 +88,70 @@ def put_user(user_id):
             setattr(user, key, value)
     storage.save()
     return make_response(jsonify(user.to_dict()), 200)
+
+
+@app_views.route('/users/<user_id>/preferences', methods=['GET'], strict_slashes=False)
+def get_user_preference(user_id):
+    """
+    Updates a user
+    """
+    list_preferences = []
+    user = storage.get(User, user_id)
+    if not user:
+        abort(404)
+    for pref in user.preferences:
+        list_preferences.append(pref.to_dict())
+
+    return jsonify(list_preferences)
+
+
+@app_views.route('/users/<user_id>/location', methods=['GET'], strict_slashes=False)
+def get_user_location(user_id):
+    """
+    Updates a user
+    """
+    user = storage.get(User, user_id)
+    location = storage.get(Location, user.location_id)
+    if not user:
+        abort(404)
+    if not location:
+        abort(404)
+
+    return jsonify(location.to_dict())
+
+
+@app_views.route('/users_search', methods=['POST'], strict_slashes=False)
+def places_search():
+    """
+    Retrieves all Place objects depending of the JSON in the body
+    of the request
+    """
+
+    if request.get_json() is None:
+        abort(400, description="Not a JSON")
+
+    data = request.get_json()
+
+    if data and len(data):
+        locations = data.get('locations', None)
+
+    if not data or not len(data) or (not locations):
+        users = storage.all(User).values()
+        list_users = []
+        for user in users:
+            list_users.append(user.to_dict())
+        return jsonify(list_users)
+
+    list_users = []
+    if locations:
+        users = storage.all(User).values()
+        for user in users:
+            if user.location_id in locations:
+                list_users.append(user)
+
+    users = []
+    for usr in list_users:
+        tmp = usr.to_dict()
+        users.append(tmp)
+
+    return jsonify(users)
