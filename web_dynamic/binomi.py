@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Starts a Flash Web Application """
+from models.location import Location
 from models.user import User
 from models.preference import Preference
 from models import storage
@@ -11,7 +12,7 @@ from flask_login import LoginManager
 
 
 app = Flask(__name__)
-#secret key for the app, it encrypts cookies
+# secret key for the app, it encrypts cookies
 app.config['SECRET_KEY'] = 'dasd13 dream team 12fqwt'
 
 # app.jinja_env.trim_blocks = True
@@ -23,9 +24,11 @@ login_manager = LoginManager()
 login_manager.login_view = 'binomi'
 login_manager.init_app(app)
 
+
 @login_manager.user_loader
 def load_user(id):
     return storage.get(User, id)
+
 
 @app.teardown_appcontext
 def close_db(error):
@@ -40,13 +43,13 @@ def binomi():
     #users = sorted(users, key=lambda k: k.name)
     #st_ct = []
 
-    #for user in users:
+    # for user in users:
     #    st_ct.append([user, sorted(user.preferences, key=lambda k: k.name)])
 
-    #preferences = storage.all(Preference).values()
-    #preferences = sorted(preferences, key=lambda k: k.name)
+    locations = storage.all(Location).values()
+    locations = sorted(locations, key=lambda k: k.name)
 
-    return render_template('home.html', cache_id=uuid.uuid4())
+    return render_template('home.html', cache_id=uuid.uuid4(), locations=locations)
 
 
 if __name__ == "__main__":

@@ -5,11 +5,13 @@ import cmd
 from datetime import datetime
 import models
 from models.base_model import BaseModel
+from models.location import Location
 from models.preference import Preference
 from models.user import User
 import shlex  # for splitting the line along spaces except in double quotes
 
-classes = {"Preference": Preference, "BaseModel": BaseModel, "User": User}
+classes = {"Location": Location, "Preference": Preference,
+           "BaseModel": BaseModel, "User": User}
 
 
 class BINOMICommand(cmd.Cmd):
