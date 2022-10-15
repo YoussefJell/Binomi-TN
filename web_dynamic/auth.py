@@ -128,6 +128,8 @@ def profile():
 
     locations = storage.all(Location).values()
     locations = sorted(locations, key=lambda k: k.name)
+    prefs = storage.all(Preference).values()
+    prefs = sorted(prefs, key=lambda k: k.name)
 
     return render_template('profile.html', method="get",
-                           prefs=storage.all(Preference).values(), locations=locations, user=my_user)
+                           prefs=prefs, locations=locations, user=my_user)
