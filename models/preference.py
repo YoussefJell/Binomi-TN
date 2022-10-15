@@ -24,6 +24,7 @@ class Preference(BaseModel, Base):
     if models.storage_t == 'db':
         __tablename__ = 'preferences'
         name = Column(String(128), nullable=False)
+        user_id = Column(String(60), ForeignKey('users.id'), nullable=False) 
         users = relationship("User",
                              secondary=user_preference,
                              viewonly=False)
