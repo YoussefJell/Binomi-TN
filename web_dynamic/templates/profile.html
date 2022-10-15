@@ -18,11 +18,101 @@
   <link rel="stylesheet" href="../static/styles/profile.css?{{ cache_id }}" />
   <link rel="stylesheet" href="../static/styles/footer.css?{{ cache_id }}" />
   <link rel="stylesheet" href="../static/styles/popover.css?{{ cache_id }}" />
+  <link rel="stylesheet" href="../static/styles/popup.css?{{ cache_id }}" />
   <script src="../static/scripts/menuclick.js?{{ cache_id }}"></script>
 </head>
 
 <body>
 
+  <div class="popup hide" id="popup">
+    <form action="/profile" method="POST">
+      <div class="container">
+        <h1 class="title">Modify Your Profile</h1>
+
+        <div class="grid">
+          <div class="form-group a">
+            <label for="fname">First Name</label>
+            <input id="fname" type="text" name="first_name" />
+          </div>
+
+          <div class="form-group b">
+            <label for="lname">Last Name</label>
+            <input id="lname" type="text" name="last_name" />
+          </div>
+
+          <div class="form-group phone-group">
+            <label for="phone">Phone Number</label>
+            <input id="phone" type="text" name="phone" required />
+          </div>
+
+          <div class="textarea-group bio">
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget (Per Month)</label>
+            <input id="budget" name="budget" type="number" min="1" pattern="[0-9]" required />
+          </div>
+
+          <div class="form-group">
+            <label for="location"> Location </label>
+            <label class="select" for="slct">
+              <select id="slct" name="location" required="required">
+                <option value="" disabled="disabled" selected="selected">Select option</option>
+                <option value="#">One</option>
+                <option value="#">Two</option>
+              </select>
+              <svg>
+                <use xlink:href="#select-arrow-down"></use>
+              </svg>
+            </label>
+            <svg class="sprites">
+              <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                <polyline points="1 1 5 5 9 1"></polyline>
+              </symbol>
+            </svg>
+          </div>
+
+          <div class="form-group">
+            <label for="sex"> Sex </label>
+            <label class="select" for="slct">
+              <select id="slct" name="sex" required="required">
+                <option value="" disabled="disabled" selected="selected">Select option</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <svg>
+                <use xlink:href="#select-arrow-down"></use>
+              </svg>
+            </label>
+            <svg class="sprites">
+              <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                <polyline points="1 1 5 5 9 1"></polyline>
+              </symbol>
+            </svg>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="preferences" id="preferences"> Preferences </label>
+
+          <select id="multi-select" name="preferences" class="livesearch" multiple="multiple" style="width:500px">
+            {% if method == "GET"%}
+            {% for pref in prefs %}
+            <option value={{pref.id}}>{{pref.name}}</option>
+            {% endfor %}
+            {% endif %}
+          </select>
+
+        </div>
+
+        <div class="button-container">
+          <button class="button" type="submit" onclick="togglepopup()">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
 
   <div class="parent">
     <div class="menu-bg" id="menu-bg"></div>
@@ -34,7 +124,7 @@
       </div>
       <nav class="nav" id="nav">
         <ul>
-          <li><a href="#">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="/logout">Log out</a></li>
         </ul>
@@ -47,10 +137,11 @@
             Location
           </h5>
           <ul class="popover">
-            <li>Ariana</li>
-            <li>Cité Sauté</li>
-            <li>Ras lambout</li>
-            <li>Milano Bariz w roma</li>
+            {% for location in locations %}
+            <li><input type="checkbox" data-id="{{ location.id }}" data-name="{{location.name}}">{{
+              location.name }}
+            </li>
+            {% endfor %}
           </ul>
         </div>
         <button type="submit" class="searchButton">
@@ -69,24 +160,19 @@
       <div class="pic">
         <img src="pic.jpg" alt="">
       </div>
-      <div class="name">FantacyDesigns</div>
-      <div class="tag">@fantacydesigns</div>
+      <div class="name">{{ user.first_name }} {{ user.last_name }}</div>
     </div>
 
     <div class="bottom-section">
       <div class="social-media">
-        <button class="button" onclick="window.location.href='/logout';">Edit</button>
+        <button class="button" onclick="togglepopup()">Edit</button>
       </div>
 
-      <div>60+ <span>I am a graduate student in the history department of [UNIVERSITY]. My current research
-          interests include 20th century American social movements.</span></div>
-      <div>200+ <span>Web Subscribers</span></div>
-      <div class="preference-section">
-        <div class="litle-card ">smoker </div>
-        <div class="litle-card "> non smoker </div>
-        <div class="litle-card ">smoker </div>
-        <div class="litle-card ">smoker </div>
-      </div>
+      <div class="description">Bio: {{ user.description }}</div>
+      <div class="border"></div>
+      <div class="subscribers">200+ <span>Web Subscribers</span></div>
+      <div class="border"></div>
+      <div class="views">500k <span>Views</span></div>
     </div>
   </div>
   <footer>
@@ -95,6 +181,17 @@
       - Binomi
     </p>
   </footer>
+  <script>
+    // When the user clicks on div, open the popup
+    function togglepopup () {
+      let popup = document.getElementById("popup");
+      if (popup.classList.contains("hide")) {
+        popup.classList.toggle("show");
+      } else {
+        popup.classList.toggle("hide");
+      }
+    }
+  </script>
 </body>
 
 </html>

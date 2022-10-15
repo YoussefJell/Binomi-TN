@@ -27,6 +27,7 @@ class Preference(BaseModel, Base):
         users = relationship("User",
                              secondary=user_preference,
                              viewonly=False)
+        user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
     else:
         name = ""
         user_ids = []

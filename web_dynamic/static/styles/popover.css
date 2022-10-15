@@ -10,18 +10,21 @@
     margin-top: 0;
 }
 
-div:hover > .popover {
+div:hover>.popover {
     display: block;
     cursor: pointer;
 
-  }
+}
+
 .popover h2 {
     font-size: 16px;
 }
+
 .popover li {
     margin: 10px 0px 5px 0px;
     list-style: none;
 }
-.popover li input{
+
+.popover li input {
     margin: 0px 10px 0px 0px;
 }

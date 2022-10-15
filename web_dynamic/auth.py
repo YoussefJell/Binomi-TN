@@ -1,5 +1,6 @@
 """Authentication views"""
 from flask import Blueprint, render_template, request, flash, redirect, url_for
+from models.location import Location
 from models.preference import Preference
 from models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -110,6 +111,7 @@ def sign_up():
 
 @auth.route('/profile', strict_slashes=False, methods=['GET', 'POST'])
 def profile():
+    my_user = storage.get(User, current_user.get_id())
     if request.method == 'POST':
         my_dict = {}
         my_dict["first_name"] = request.form.get('first_name')
@@ -119,16 +121,13 @@ def profile():
         my_dict["description"] = request.form.get('bio')
         my_dict["sex"] = request.form.get('sex')
         preferences = request.form.getlist('preferences')
-        
-        
-        my_user = storage.get(User, current_user.get_id())
+
         for key, value in my_dict.items():
             setattr(my_user, key, value)
         my_user.save()
-    
-    return render_template('profile.html', method="get", prefs=storage.all(Preference).values())
 
+    locations = storage.all(Location).values()
+    locations = sorted(locations, key=lambda k: k.name)
 
-@auth.route('/modify-profile',  strict_slashes=False)
-def modify():
-    return render_template('modify.html', cache_id=uuid.uuid4())
+    return render_template('profile.html', method="get",
+                           prefs=storage.all(Preference).values(), locations=locations, user=my_user)
