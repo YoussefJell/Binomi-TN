@@ -19,10 +19,12 @@ class User(UserMixin, BaseModel, Base):
         password = Column(String(128), nullable=False)
         first_name = Column(String(128), nullable=False)
         last_name = Column(String(128), nullable=False)
-        description = Column(String(1024), nullable=False)
+        description = Column(String(1024), nullable=True)
         location_id = Column(String(60), ForeignKey(
-            'locations.id'), nullable=False)
-        budget = Column(Integer, nullable=False, default=0)
+            'locations.id'), nullable=True)
+        phone = Column(Integer, nullable=True)
+        sex = Column(String(64), nullable=True)
+        budget = Column(Integer, nullable=True, default=0)
         preferences = relationship("Preference", backref="user")
     else:
         email = ""
@@ -31,8 +33,10 @@ class User(UserMixin, BaseModel, Base):
         last_name = ""
         description = ""
         location_id = ""
+        phone = 0
         sex = ""
         budget = 0
+        preferences = []
 
     def __init__(self, *args, **kwargs):
         """initializes user"""

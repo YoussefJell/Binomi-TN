@@ -3,40 +3,39 @@
   <head>
     <meta charset="utf-8" />
     <title>modify</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"
-    />
+
+    <link rel="stylesheet" href="../static/styles/chosen.min.css" />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css"/>
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
-    <link rel="stylesheet" href="https://harvesthq.github.io/chosen/chosen.css">
-
-
     <link rel="stylesheet" href="../static/styles/modify.css" />
 
-    <link
-      rel="import"
-      href="https://rawgit.com/sitepoint-editors/multiselect-web-component/master/src/multiselect.html"
-    />
+    <link rel="import" href="https://rawgit.com/sitepoint-editors/multiselect-web-component/master/src/multiselect.html"/>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.22/webcomponents.js"></script>
-    <script src="../static/scripts/modify.css"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-    <script src= "https//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src= "https//harvesthq.github.io/chosen/chosen.jquery.js"></script>
+
+    <script type="text/javascript" src="../static/scripts/jquery-3.6.1.min.js" /></script> 
+    <script type="text/javascript" src="../static/scripts/chosen.jquery.min.js" /></script>
+
+    <script src="../static/scripts/modify.js"></script>
 
   </head>
 
   <body>
+    <form action="/profile" method="POST">
     <div class="container">
-      <form action="/profile" enctype="multipart/form-data" method="POST">
       <h1 class="title">Modify Your Profile</h1>
 
       <div class="grid">
         <div class="form-group a">
           <label for="fname">First Name</label>
-          <input id="fname" name="first_name" type="text" />
+          <input id="fname" type="text" name="first_name"/>
         </div>
 
         <div class="form-group b">
@@ -51,7 +50,7 @@
 
         <div class="textarea-group bio" >
           <label for="bio">Bio</label>
-          <textarea id="bio" name='bio' required></textarea>
+          <textarea id="bio" name="bio" required></textarea>
         </div>
         <div class="form-group">
           <label for="budget" >Budget (Per Month)</label>
@@ -61,10 +60,10 @@
         <div class="form-group">
           <label for="location"> Location </label>
           <label class="select" for="slct">
-            <select id="slct" required="required">
+            <select id="slct" name="location" required="required">
               <option value="" disabled="disabled" selected="selected">Select option</option>
-              <option value="one">One</option>
-              <option value="two">Two</option>
+              <option value="#">One</option>
+              <option value="#">Two</option>
             </select>
             <svg>
               <use xlink:href="#select-arrow-down"></use>
@@ -78,12 +77,12 @@
         </div>
 
         <div class="form-group">
-          <label for="location"> Sex </label>
+          <label for="sex"> Sex </label>
           <label class="select" for="slct">
-            <select id="slct" name="select_sex" required="required">
+            <select id="slct" name="sex" required="required">
               <option value="" disabled="disabled" selected="selected">Select option</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
             <svg>
               <use xlink:href="#select-arrow-down"></use>
@@ -96,21 +95,25 @@
             </svg>
         </div>
 
-        <select data-placeholder="Choose tags ..." name="tags[]" multiple class="chosen-select">
-          <option value="Engineering">Engineering</option>
-          <option value="Carpentry">Carpentry</option>
-          <option value="Plumbing">Plumbing</option>
-          <option value="Electical">Electrical</option>
-          <option value="Mechanical">Mechanical</option>
-          <option value="HVAC">HVAC</option>
-        </select>
-        
+      </div>
+
+      <div class="form-group">
+      <label for="preferences" id="preferences"> Preferences </label>
+
+      <select id="multi-select" name="preferences" class="livesearch" multiple="multiple" style="width:500px">
+        {% if method == "GET"%}
+          {% for pref in prefs %}
+            <option value={{pref.id}}>{{pref.name}}</option>
+          {% endfor %}
+        {% endif %}
+      </select>
+
       </div>
 
       <div class="button-container">
         <button class="button" type="submit">Save</button>
       </div>
-      </form>
     </div>
+  </form>
   </body>
 </html>

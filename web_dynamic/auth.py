@@ -1,5 +1,6 @@
 """Authentication views"""
 from flask import Blueprint, render_template, request, flash, redirect, url_for
+from models.preference import Preference
 from models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
@@ -110,18 +111,22 @@ def sign_up():
 @auth.route('/profile', strict_slashes=False, methods=['GET', 'POST'])
 def profile():
     if request.method == 'POST':
-        first_name = request.form.get('first_name')
-        last_name = request.form.get('last_name')
-        budget = request.form.get('budget')
-        bio = request.form.get('bio')
-        preferences = request.form.get('select_preferences')
-        sex = request.form.get('select_sex')
-        print(first_name, sex, preferences)
-        print(request.form)
-
-       
+        my_dict = {}
+        my_dict["first_name"] = request.form.get('first_name')
+        my_dict["last_name"] = request.form.get('last_name')
+        my_dict["budget"] = request.form.get('budget')
+        my_dict["phone"] = request.form.get('phone')
+        my_dict["description"] = request.form.get('bio')
+        my_dict["sex"] = request.form.get('sex')
+        preferences = request.form.getlist('preferences')
+        
+        
+        my_user = storage.get(User, current_user.get_id())
+        for key, value in my_dict.items():
+            setattr(my_user, key, value)
+        my_user.save()
     
-    return render_template('profile.html')
+    return render_template('profile.html', method="get", prefs=storage.all(Preference).values())
 
 
 @auth.route('/modify-profile',  strict_slashes=False)
