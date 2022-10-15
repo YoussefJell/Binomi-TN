@@ -4,6 +4,7 @@ Contains the class DBStorage
 """
 
 import models
+from models.location import Location
 from models.preference import Preference
 from models.base_model import BaseModel, Base
 from models.user import User
@@ -12,7 +13,7 @@ import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Preference": Preference, "User": User}
+classes = {"Location": Location, "Preference": Preference, "User": User}
 
 
 class DBStorage:

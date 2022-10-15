@@ -178,37 +178,49 @@ body {
 
 }
 
-.card__description {
-
+.cardProfileBtn {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  border: 1px solid #000000;
+  border-radius: 50px;
+  font-size: 14px;
+  color: #000000;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.cardDescription {
+  left: 5px;
+  top: 100px;
+  position: absolute;
+  max-height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 30px;
+}
+.cardLocation {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  background-color: #ffffff;
+	font-size: 13px;
+	text-align: center;
+  height: 25px;
+}
+.price {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: space-around;
-  padding: 15px 0;
-}
-
-.card__descriptionIcon {
-  font-size: 32px;
-  margin-bottom: 140px;
-}
-
-.card__descriptionText {
-  color: #57727C;
-  font-size: 12px;
-  text-align: center;
-  max-width: calc(100% - 30px);
-}
-
-.card__price {
-  text-align: center;
+  justify-content: end;
   color: #000000;
   font-size: 12px;
   font-weight: 700;
-  padding: 25px;
-  align-items: flex-end;
-  border-top: 1px solid #D7DBDD;
+  padding: 20px;
+  border-bottom: 1px solid #D7DBDD;
   background-color: #FFDD3C;
+  margin-bottom: 30px;
 }
 
 .card--fixedWidth {
@@ -216,7 +228,6 @@ body {
 }
 
 .Signin-up {
-
   background-color: #FFDD3C;
   border: none;
   border-radius: 30px;

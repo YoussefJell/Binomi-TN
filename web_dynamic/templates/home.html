@@ -13,10 +13,12 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../static/styles/style.css" />
-  <link rel="stylesheet" href="../static/styles/footer.css" />
-  <link rel="stylesheet" href="../static/styles/popover.css" />
-  <script src="../static/scripts/menuclick.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="../static/styles/style.css?{{ cache_id }}" />
+  <link rel="stylesheet" href="../static/styles/footer.css?{{ cache_id }}" />
+  <link rel="stylesheet" href="../static/styles/popover.css?{{ cache_id }}" />
+  <script src="../static/scripts/menuclick.js?{{ cache_id }}"></script>
+  <script src="../static/scripts/loadhome.js?{{ cache_id }}"></script>
 </head>
 
 <body>
@@ -51,10 +53,11 @@
             Location
           </h5>
           <ul class="popover">
-            <li>Ariana</li>
-            <li>Cité Sauté</li>
-            <li>Ras lambout</li>
-            <li>Milano Bariz w roma</li>
+            {% for location in locations %}
+            <li><input type="checkbox" data-id="{{ location.id }}" data-name="{{location.name}}">{{
+              location.name }}
+            </li>
+            {% endfor %}
           </ul>
         </div>
         <button type="submit" class="searchButton">
@@ -75,69 +78,7 @@
   </div>
 
   <div class="cards-wrapper">
-    <div class="card card--fixedWidth">
-      <div class="card__description">
-        <div class="icon fa fa-flask card__descriptionIcon"></div>
-        <div class="card__descriptionText">Science potion</div>
-      </div>
-      <div class="card__price">Costs $5</div>
-    </div>
-    <div class="card card--fixedWidth">
-      <div class="card__description">
-        <div class="icon fa fa-flask card__descriptionIcon"></div>
-        <div class="card__descriptionText">Science potion</div>
-      </div>
-      <div class="card__price">Costs $5</div>
-    </div>
-    <div class="card card--fixedWidth">
-      <div class="card__description">
-        <div class="icon fa fa-flask card__descriptionIcon"></div>
-        <div class="card__descriptionText">Science potion</div>
-      </div>
-      <div class="card__price">Costs $5</div>
-    </div>
-    <div class="card card--fixedWidth">
-      <div class="card__description">
-        <div class="icon fa fa-flask card__descriptionIcon"></div>
-        <div class="card__descriptionText">Science potion</div>
-      </div>
-      <div class="card__price">Costs $5</div>
-    </div>
-    <div class="card card--fixedWidth">
-      <div class="card__description">
-        <div class="icon fa fa-flask card__descriptionIcon"></div>
-        <div class="card__descriptionText">Science potion</div>
-      </div>
-      <div class="card__price">Costs $5</div>
-    </div>
-    <div class="card card--fixedWidth">
-      <div class="card__description">
-        <div class="icon fa fa-flask card__descriptionIcon"></div>
-        <div class="card__descriptionText">Science potion</div>
-      </div>
-      <div class="card__price">Costs $5</div>
-    </div>
-    <div class="card card--fixedWidth">
-      <div class="card__description">
-        <div class="icon fa fa-flask card__descriptionIcon"></div>
-        <div class="card__descriptionText">Science potion</div>
-      </div>
-      <div class="card__price">Costs $5</div>
-    </div>
-    <div class="card card--fixedWidth">
-      <div class="card__description">
-        <div class="icon fa fa-flask card__descriptionIcon"></div>
-        <div class="card__descriptionText">Science potion</div>
-      </div>
-      <div class="card__price">Costs $5</div>
-    </div>
-    <div class="card card--fixedWidth">
-      <div class="card__description">
-        <div class="icon fa fa-flask card__descriptionIcon"></div>
-        <div class="card__descriptionText">Science potion</div>
-      </div>
-      <div class="card__price">Costs $5</div>
-    </div>
+
   </div>
 
   <footer>
