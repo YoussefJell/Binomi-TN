@@ -121,10 +121,10 @@ def profile():
         preferences = request.form.getlist('preferences')
         
         
-        my_user = storage.get(User, current_user.get_id())
-        for key, value in my_dict.items():
-            setattr(my_user, key, value)
-        my_user.save()
+        #my_user = storage.get(User, current_user.get_id())
+        #for key, value in my_dict.items():
+           # setattr(my_user, key, value)
+        #my_user.save()
     
     return render_template('profile.html', method="get", prefs=storage.all(Preference).values())
 
