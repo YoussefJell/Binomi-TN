@@ -11,7 +11,7 @@ $(document).ready(function () {
           '<div class="card card--fixedWidth">',
           '<div class="Price">',
           '<button class="cardProfileBtn"></button>',
-          '<h6>' + result[i].first_name + '</h6>',
+          '<h6>' + result[i].first_name + ' ' + result[i].last_name + '</h6>',
           '</div>',
           '<div class="cardDescription">',
           '<p>' + result[i].description + '</p>',
