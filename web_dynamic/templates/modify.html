@@ -10,6 +10,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
+    <link rel="stylesheet" href="https://harvesthq.github.io/chosen/chosen.css">
+
+
     <link rel="stylesheet" href="../static/styles/modify.css" />
 
     <link
@@ -20,36 +23,39 @@
     <script src="../static/scripts/modify.css"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src= "https//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src= "https//harvesthq.github.io/chosen/chosen.jquery.js"></script>
 
   </head>
 
   <body>
     <div class="container">
+      <form action="/profile" enctype="multipart/form-data" method="POST">
       <h1 class="title">Modify Your Profile</h1>
 
       <div class="grid">
         <div class="form-group a">
           <label for="fname">First Name</label>
-          <input id="fname" type="text" />
+          <input id="fname" name="first_name" type="text" />
         </div>
 
         <div class="form-group b">
           <label for="lname">Last Name</label>
-          <input id="lname" type="text" />
+          <input id="lname" type="text" name="last_name"/>
         </div>
 
         <div class="form-group phone-group">
           <label for="phone">Phone Number</label>
-          <input id="phone" type="text" required/>
+          <input id="phone" type="text" name="phone" required/>
         </div>
 
         <div class="textarea-group bio" >
           <label for="bio">Bio</label>
-          <textarea id="bio" required></textarea>
+          <textarea id="bio" name='bio' required></textarea>
         </div>
         <div class="form-group">
           <label for="budget" >Budget (Per Month)</label>
-          <input id="budget" type="number" min="1" pattern="[0-9]" required/>
+          <input id="budget" name="budget" type="number" min="1" pattern="[0-9]" required/>
         </div>
 
         <div class="form-group">
@@ -57,8 +63,8 @@
           <label class="select" for="slct">
             <select id="slct" required="required">
               <option value="" disabled="disabled" selected="selected">Select option</option>
-              <option value="#">One</option>
-              <option value="#">Two</option>
+              <option value="one">One</option>
+              <option value="two">Two</option>
             </select>
             <svg>
               <use xlink:href="#select-arrow-down"></use>
@@ -74,10 +80,10 @@
         <div class="form-group">
           <label for="location"> Sex </label>
           <label class="select" for="slct">
-            <select id="slct" required="required">
+            <select id="slct" name="select_sex" required="required">
               <option value="" disabled="disabled" selected="selected">Select option</option>
-              <option value="#">Male</option>
-              <option value="#">Female</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
             </select>
             <svg>
               <use xlink:href="#select-arrow-down"></use>
@@ -90,29 +96,21 @@
             </svg>
         </div>
 
-        <section class="pref">
-          <label id='preferences' for="preferences">Preferences (Your Habits)</label>
-          <div id="container">
-            <x-multiselect placeholder="Select Value" required>
-              <li value="1" selected>Non-Smoker</li>
-              <li value="2">Smoker</li>
-              <li value="3">Light Sleeper</li>
-              <li value="4">Heavy Sleeper</li>
-              <li value="5">I frequently have guests</li>
-              <li value="6">I rarely have guests</li>
-              <li value="7">I never have guests</li>
-              <li value="8">I am okay with my roommate bringing guests</li>
-              <li value="9">I am NOT okay with my roommate bringing guests</li>
-              <li value="10">Russia</li>
-              <li value="11">United States</li>
-            </x-multiselect>
-          </div>
-        </section>
+        <select data-placeholder="Choose tags ..." name="tags[]" multiple class="chosen-select">
+          <option value="Engineering">Engineering</option>
+          <option value="Carpentry">Carpentry</option>
+          <option value="Plumbing">Plumbing</option>
+          <option value="Electical">Electrical</option>
+          <option value="Mechanical">Mechanical</option>
+          <option value="HVAC">HVAC</option>
+        </select>
+        
       </div>
 
       <div class="button-container">
         <button class="button" type="submit">Save</button>
       </div>
+      </form>
     </div>
   </body>
 </html>
