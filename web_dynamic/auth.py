@@ -131,5 +131,4 @@ def profile():
     prefs = storage.all(Preference).values()
     prefs = sorted(prefs, key=lambda k: k.name)
 
-    return render_template('profile.html', method="get",
-                           prefs=prefs, locations=locations, user=my_user)
+    return render_template('profile.html', prefs=prefs, locations=locations, user=my_user)

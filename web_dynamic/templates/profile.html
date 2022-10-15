@@ -6,6 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Binomi-tn</title>
+
+  <link rel="stylesheet" href="../static/styles/chosen.min.css" />
+
+
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
@@ -19,6 +23,13 @@
   <link rel="stylesheet" href="../static/styles/footer.css?{{ cache_id }}" />
   <link rel="stylesheet" href="../static/styles/popover.css?{{ cache_id }}" />
   <link rel="stylesheet" href="../static/styles/popup.css?{{ cache_id }}" />
+
+
+
+  <script type="text/javascript" src="../static/scripts/jquery-3.6.1.min.js" /></script> 
+  <script type="text/javascript" src="../static/scripts/chosen.jquery.min.js" /></script>
+  <script src="../static/scripts/modify.js"></script>
+
   <script src="../static/scripts/menuclick.js?{{ cache_id }}"></script>
 </head>
 
@@ -98,11 +109,9 @@
           <label for="preferences" id="preferences"> Preferences </label>
 
           <select id="multi-select" name="preferences" class="livesearch" multiple="multiple" style="width:500px">
-            {% if method == "GET"%}
             {% for pref in prefs %}
             <option value={{pref.id}}>{{pref.name}}</option>
             {% endfor %}
-            {% endif %}
           </select>
 
         </div>
