@@ -130,5 +130,6 @@ def profile():
     locations = sorted(locations, key=lambda k: k.name)
     prefs = storage.all(Preference).values()
     prefs = sorted(prefs, key=lambda k: k.name)
+    
 
-    return render_template('profile.html', prefs=prefs, locations=locations, user=my_user)
+    return render_template('profile.html', prefs=prefs, locations=locations, user=my_user, current=current_user.get_id())

@@ -173,9 +173,11 @@
     </div>
 
     <div class="bottom-section">
-      <div class="social-media">
-        <button class="button" onclick="togglepopup()">Edit</button>
-      </div>
+      {% if user.id == current %}
+        <div class="social-media">
+          <button class="button" onclick="togglepopup()">Edit</button>
+        </div>
+      {% endif %}
 
       <div class="description">Bio: {{ user.description }}</div>
       <div class="border"></div>
