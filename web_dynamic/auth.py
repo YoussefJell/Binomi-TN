@@ -111,8 +111,9 @@ def sign_up():
 
 @auth.route('/profile', strict_slashes=False, methods=['GET', 'POST'])
 def profile():
-    my_user = storage.get(User, current_user.get_id())
+    my_user = storage.get(User, request.args.get("uid"))
     if request.method == 'POST':
+        my_user = storage.get(User, current_user.get_id())
         my_dict = {}
         my_dict["first_name"] = request.form.get('first_name')
         my_dict["last_name"] = request.form.get('last_name')
@@ -128,8 +129,10 @@ def profile():
 
     locations = storage.all(Location).values()
     locations = sorted(locations, key=lambda k: k.name)
+    
     prefs = storage.all(Preference).values()
     prefs = sorted(prefs, key=lambda k: k.name)
     
+    uid = request.args.get("uid")
 
-    return render_template('profile.html', prefs=prefs, locations=locations, user=my_user, current=current_user.get_id())
+    return render_template('profile.html', prefs=prefs, locations=locations, uid=uid, user=my_user, current=current_user.get_id())
