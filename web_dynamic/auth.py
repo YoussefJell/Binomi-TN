@@ -1,7 +1,7 @@
 """Authentication views"""
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from models.location import Location
-from models.preference import Preference
+from models.preference import Preference, user_preference
 from models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
@@ -114,6 +114,7 @@ def sign_up():
 
 def profile(uid=None):
     my_user = storage.get(User, request.args.get("uid"))
+    
     if request.method == 'POST':
         my_user = storage.get(User, current_user.get_id())
         my_dict = {}
@@ -125,6 +126,22 @@ def profile(uid=None):
         my_dict["sex"] = request.form.get('sex')
         preferences = request.form.getlist('preferences')
 
+        #removing the deselected preferences
+        for pref_user in my_user.preferences:
+            if pref_user.id not in preferences:
+                my_user.preferences.remove(pref_user)
+                pref_user.users.remove(my_user)
+                pref_user.save()
+
+        #populate the many to many "user_preference" table
+        for pref_id in preferences:
+            pref_obj = storage.get(Preference, pref_id)
+            if pref_obj not in my_user.preferences:
+                my_user.preferences.append(pref_obj)
+                pref_obj.users.append(my_user)
+                pref_obj.save()
+    
+                    
         for key, value in my_dict.items():
             setattr(my_user, key, value)
         my_user.save()
