@@ -153,5 +153,5 @@ def profile(uid=None):
     prefs = sorted(prefs, key=lambda k: k.name)
     
     uid = request.args.get("uid")
-
+    storage.reload()
     return render_template('profile.html', prefs=prefs, locations=locations, uid=uid, user=my_user, current=current_user.get_id())
