@@ -111,10 +111,9 @@ def sign_up():
 
 @auth.route('/profile', strict_slashes=False, methods=['GET', 'POST'])
 @auth.route('/profile/<uid>', strict_slashes=False, methods=['GET', 'POST'])
-
 def profile(uid=None):
     my_user = storage.get(User, request.args.get("uid"))
-    
+
     if request.method == 'POST':
         my_user = storage.get(User, current_user.get_id())
         my_dict = {}
@@ -124,34 +123,36 @@ def profile(uid=None):
         my_dict["phone"] = request.form.get('phone')
         my_dict["description"] = request.form.get('bio')
         my_dict["sex"] = request.form.get('sex')
+        my_dict["location_id"] = request.form.get('location')
+        curr_loc = storage.get(Location, request.form.get('location'))
+        my_dict["location_name"] = curr_loc.name
         preferences = request.form.getlist('preferences')
 
-        #removing the deselected preferences
+        # removing the deselected preferences
         for pref_user in my_user.preferences:
             if pref_user.id not in preferences:
                 my_user.preferences.remove(pref_user)
                 pref_user.users.remove(my_user)
                 pref_user.save()
 
-        #populate the many to many "user_preference" table
+        # populate the many to many "user_preference" table
         for pref_id in preferences:
             pref_obj = storage.get(Preference, pref_id)
             if pref_obj not in my_user.preferences:
                 my_user.preferences.append(pref_obj)
                 pref_obj.users.append(my_user)
                 pref_obj.save()
-    
-                    
+
         for key, value in my_dict.items():
             setattr(my_user, key, value)
         my_user.save()
 
     locations = storage.all(Location).values()
     locations = sorted(locations, key=lambda k: k.name)
-    
+
     prefs = storage.all(Preference).values()
     prefs = sorted(prefs, key=lambda k: k.name)
-    
+
     uid = request.args.get("uid")
     storage.reload()
     return render_template('profile.html', prefs=prefs, locations=locations, uid=uid, user=my_user, current=current_user.get_id())

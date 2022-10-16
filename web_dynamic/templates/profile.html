@@ -72,8 +72,9 @@
             <label class="select" for="slct">
               <select id="slct" name="location" required="required">
                 <option value="" disabled="disabled" selected="selected">Select option</option>
-                <option value="#">One</option>
-                <option value="#">Two</option>
+                {% for location in locations %}
+                <option value="{{location.id}}">{{location.name}}</option>
+                {% endfor %}
               </select>
               <svg>
                 <use xlink:href="#select-arrow-down"></use>
@@ -111,19 +112,9 @@
           <label for="preferences" id="preferences"> Preferences </label>
 
           <select id="multi-select" name="preferences" class="livesearch" multiple="multiple" style="width:500px">
-            {% if user.preferences %}
-              {% for pref in prefs %}
-                {% if pref in user.preferences %}
-                  <option value={{pref.id}} selected>{{pref.name}}</option>
-                {% else %}
-                 <option value={{pref.id}}>{{pref.name}}</option>
-                {% endif %}
-              {% endfor %}
-            {%else%}
-              {% for pref in prefs %}
-                <option value={{pref.id}}>{{pref.name}}</option>
-              {% endfor %}
-            {% endif %}
+            {% for pref in prefs %}
+            <option value={{pref.id}}>{{pref.name}}</option>
+            {% endfor %}
           </select>
 
         </div>
@@ -149,7 +140,11 @@
           <li><a href="/">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="/profile?uid={{current_user.get_id()}}">Profile</a></li>
+          {% if current_user.is_authenticated is false %}
+          <li><a href="/logout">Log in</a></li>
+          {% else %}
           <li><a href="/logout">Log out</a></li>
+          {% endif %}
         </ul>
       </nav>
     </div>
@@ -185,27 +180,23 @@
   </div>
   <div class="profile-card">
     <div class="top-section">
-      <i class="message fas fa-envelope"></i>
-      <i class="notif fas fa-bell"></i>
       <div class="pic">
         <img src="pic.jpg" alt="">
       </div>
       <div class="name">{{ user.first_name }} {{ user.last_name }}</div>
+      <div class="userloc">Location: {{ user.location_name }}</div>
+      {% if uid == current %}
+      <button class="editbutton" onclick="togglepopup()">Edit</button>
+      {% else %}
+      <button class="editbuttonGrayed">Edit</button>
+      {% endif %}
     </div>
 
     <div class="bottom-section">
-      {% if uid == current %}
-      <div class="social-media">
-        <button class="button" onclick="togglepopup()">Edit</button>
-      </div>
-      {% endif %}
-
-      <div class="description">Bio: {{ user.description }}</div>
-      <div class="border"></div>
-      <div class="subscribers">200+ <span>Web Subscribers</span></div>
-      <div class="border"></div>
-      <div class="views">500k <span>Views</span></div>
-    </div>
+      <div class="description"><span class="bold">Bio: </span>{{ user.description }}</div>
+      <div class="phone"><span class="bold">Phone: </span>{{ user.phone }}</div>
+      <div class="sex"><span class="bold">Sex: </span>{{ user.sex }}</div>
+      <div class="budget"><span class="bold">Budget: </span>{{ user.budget }}TND</div>    </div>
   </div>
   <footer>
     <p>

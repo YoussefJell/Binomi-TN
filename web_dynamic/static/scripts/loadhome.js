@@ -7,21 +7,23 @@ $(document).ready(function () {
     data: JSON.stringify(dict),
     success: function (result) {
       for (let i in result) {
-        let users_content = [
-          '<div class="card card--fixedWidth">',
-          '<div class="Price">',
-          '<button class="cardProfileBtn" onclick="window.location.href=\'/profile?uid=' + result[i].id + '\'"></button>',
-          '<h6>' + result[i].first_name + ' ' + result[i].last_name + '</h6>',
-          '</div>',
-          '<div class="cardDescription">',
-          '<p>' + result[i].description + '</p>',
-          '</div>',
-          '<div class="cardLocation">',
-          '<p>Location: ' + result[i].location_id + '</p>',
-          '</div>',
-          '</div>'
-        ];
-        $(users_content.join('')).appendTo('div.cards-wrapper');
+        if (result[i].location_name) {
+          let users_content = [
+            '<div class="card card--fixedWidth">',
+            '<div class="Price">',
+            '<button class="cardProfileBtn" onclick="window.location.href=\'/profile?uid=' + result[i].id + '\'"></button>',
+            '<h6>' + result[i].first_name + ' ' + result[i].last_name + '</h6>',
+            '</div>',
+            '<div class="cardDescription">',
+            '<p>' + result[i].description + '</p>',
+            '</div>',
+            '<div class="cardLocation">',
+            '<p>Location: ' + result[i].location_name + '</p>',
+            '</div>',
+            '</div>'
+          ];
+          $(users_content.join('')).appendTo('div.cards-wrapper');
+        }
       }
     },
     dataType: 'json',
@@ -65,21 +67,23 @@ $(document).ready(function () {
       data: JSON.stringify(locationsIds),
       success: function (result) {
         for (let i in result) {
-          let users_content = [
-            '<div class="card card--fixedWidth">',
-            '<div class="Price">',
-            '<button class="cardProfileBtn" onclick="window.location.href=\'/profile?uid=' + result[i].id + '\'"></button>',
-            '<h6>' + result[i].first_name + ' ' + result[i].last_name + '</h6>',
-            '</div>',
-            '<div class="cardDescription">',
-            '<p>' + result[i].description + '</p>',
-            '</div>',
-            '<div class="cardLocation">',
-            '<p>Location: ' + result[i].location_id + '</p>',
-            '</div>',
-            '</div>'
-          ];
-          $(users_content.join('')).appendTo('div.cards-wrapper');
+          if (result[i].location_name) {
+            let users_content = [
+              '<div class="card card--fixedWidth">',
+              '<div class="Price">',
+              '<button class="cardProfileBtn" onclick="window.location.href=\'/profile?uid=' + result[i].id + '\'"></button>',
+              '<h6>' + result[i].first_name + ' ' + result[i].last_name + '</h6>',
+              '</div>',
+              '<div class="cardDescription">',
+              '<p>' + result[i].description + '</p>',
+              '</div>',
+              '<div class="cardLocation">',
+              '<p>Location: ' + result[i].location_name + '</p>',
+              '</div>',
+              '</div>'
+            ];
+            $(users_content.join('')).appendTo('div.cards-wrapper');
+          }
         }
       },
       dataType: 'json',

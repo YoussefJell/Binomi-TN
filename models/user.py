@@ -22,6 +22,7 @@ class User(UserMixin, BaseModel, Base):
         description = Column(String(1024), nullable=True)
         location_id = Column(String(60), ForeignKey(
             'locations.id'), nullable=True)
+        location_name = Column(String(128), nullable=True)
         phone = Column(Integer, nullable=True)
         sex = Column(String(64), nullable=True)
         budget = Column(Integer, nullable=True, default=0)
@@ -33,6 +34,7 @@ class User(UserMixin, BaseModel, Base):
         last_name = ""
         description = ""
         location_id = ""
+        location_name = ""
         phone = 0
         sex = ""
         budget = 0
