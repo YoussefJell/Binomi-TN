@@ -36,7 +36,7 @@
 <body>
   {% if uid == current %}
   <div class="popup hide" id="popup">
-    <form action="/profile" method="POST">
+    <form action="/profile?uid={{uid}}" method="POST">
       <div class="container">
         <h1 class="title">Modify Your Profile</h1>
 
@@ -53,7 +53,7 @@
 
           <div class="form-group phone-group">
             <label for="phone">Phone Number</label>
-            <input id="phone" type="text" name="phone" required />
+            <input id="phone" type="tel" pattern="[0-9]{8}" name="phone" required />
           </div>
 
           <div class="textarea-group bio">
@@ -136,6 +136,7 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="#">About</a></li>
+          <li><a href="/profile?uid={{current_user.get_id()}}">Profile</a></li>
           <li><a href="/logout">Log out</a></li>
         </ul>
       </nav>

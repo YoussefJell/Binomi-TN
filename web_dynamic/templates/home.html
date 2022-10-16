@@ -36,7 +36,7 @@
           {% if current_user.is_authenticated is false %}
           <li><a href="/login">Log In</a></li>
           {% else %}
-          <li><a href="/profile">Profile</a></li>
+          <li><a href="/profile?uid={{current_user.get_id()}}">Profile</a></li>
           <li><a href="/logout">Log Out</a></li>
           {% endif %}
         </ul>

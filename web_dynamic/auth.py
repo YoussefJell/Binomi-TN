@@ -110,7 +110,9 @@ def sign_up():
 
 
 @auth.route('/profile', strict_slashes=False, methods=['GET', 'POST'])
-def profile():
+@auth.route('/profile/<uid>', strict_slashes=False, methods=['GET', 'POST'])
+
+def profile(uid=None):
     my_user = storage.get(User, request.args.get("uid"))
     if request.method == 'POST':
         my_user = storage.get(User, current_user.get_id())
