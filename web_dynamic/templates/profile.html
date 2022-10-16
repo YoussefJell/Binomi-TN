@@ -110,7 +110,11 @@
 
           <select id="multi-select" name="preferences" class="livesearch" multiple="multiple" style="width:500px">
             {% for pref in prefs %}
-            <option value={{pref.id}}>{{pref.name}}</option>
+              {% if pref in user.preferences %}
+                <option value={{pref.id}} selected>{{pref.name}}</option>
+              {% else %}
+                <option value={{pref.id}}>{{pref.name}}</option>
+              {% endif %}
             {% endfor %}
           </select>
 

@@ -30,7 +30,7 @@ class Preference(BaseModel, Base):
                              viewonly=False)
     else:
         name = ""
-        user_ids = []
+        #user_ids = []
 
     def __init__(self, *args, **kwargs):
         """initializes Place"""
