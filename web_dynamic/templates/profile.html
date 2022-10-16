@@ -26,8 +26,10 @@
 
 
 
-  <script type="text/javascript" src="../static/scripts/jquery-3.6.1.min.js" /></script> 
-  <script type="text/javascript" src="../static/scripts/chosen.jquery.min.js" /></script>
+  <script type="text/javascript" src="../static/scripts/jquery-3.6.1.min.js" />
+  </script>
+  <script type="text/javascript" src="../static/scripts/chosen.jquery.min.js" />
+  </script>
   <script src="../static/scripts/modify.js"></script>
 
   <script src="../static/scripts/menuclick.js?{{ cache_id }}"></script>
@@ -170,9 +172,16 @@
         </button>
       </div>
     </div>
+    {% if current_user.is_authenticated is false %}
     <div class="child2">
-      <button class="Signin-up " onclick="window.location.href='/logout';">Log out</button>
+      <button class="Signin-up " onclick="window.location.href='/login';">Log In</button>
     </div>
+
+    {% else %}
+    <div class="child2">
+      <button class="Signin-up " onclick="window.location.href='/logout';">Log Out</button>
+    </div>
+    {% endif %}
   </div>
   <div class="profile-card">
     <div class="top-section">
@@ -186,9 +195,9 @@
 
     <div class="bottom-section">
       {% if uid == current %}
-        <div class="social-media">
-          <button class="button" onclick="togglepopup()">Edit</button>
-        </div>
+      <div class="social-media">
+        <button class="button" onclick="togglepopup()">Edit</button>
+      </div>
       {% endif %}
 
       <div class="description">Bio: {{ user.description }}</div>
