@@ -37,6 +37,24 @@
 
 <body>
   {% if uid == current %}
+  <div class="uploadpopup hide" id="uploadpopup">
+    <div class="container2">
+      <h1 class="title">Upload your profile picture</h1>
+      <br>
+      <div class="grid">
+        <form method="post" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}
+          {% for error in form.photo.errors %}
+          <span style="color: red;">{{ error }}</span>
+          {% endfor %}
+          {{ form.photo }}
+          <div class="button-container2">
+            {{ form.submit(class="button") }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <div class="popup hide" id="popup">
     <form action="/profile?uid={{uid}}" method="POST">
       <div class="container">
@@ -180,15 +198,24 @@
   </div>
   <div class="profile-card">
     <div class="top-section">
-      <div class="pic">
-        <img src="pic.jpg" alt="">
+      {% if user.image_url %}
+      <div class="pic" onclick="toggleuploadpopup()">
+        <img src="{{ user.image_url }}" alt="Pfp" class="pfp">
       </div>
+      {% else %}
+      <div class="pic" onclick="toggleuploadpopup()">
+        <img src="../uploads/default.png" alt="Pfp" class="pfp">
+      </div>
+      {% endif %}
+      {% if uid == current %}
+      <div class="myname">{{ user.first_name }} {{ user.last_name }}</div>
+      {% else %}
       <div class="name">{{ user.first_name }} {{ user.last_name }}</div>
+      {% endif %}
       <div class="userloc">Location: {{ user.location_name }}</div>
       {% if uid == current %}
       <button class="editbutton" onclick="togglepopup()">Edit</button>
       {% else %}
-      <button class="editbuttonGrayed">Edit</button>
       {% endif %}
     </div>
 
@@ -196,7 +223,8 @@
       <div class="description"><span class="bold">Bio: </span>{{ user.description }}</div>
       <div class="phone"><span class="bold">Phone: </span>{{ user.phone }}</div>
       <div class="sex"><span class="bold">Sex: </span>{{ user.sex }}</div>
-      <div class="budget"><span class="bold">Budget: </span>{{ user.budget }}TND</div>    </div>
+      <div class="budget"><span class="bold">Budget: </span>{{ user.budget }}TND</div>
+    </div>
   </div>
   <footer>
     <p>
@@ -212,6 +240,14 @@
         popup.classList.toggle("show");
       } else {
         popup.classList.toggle("hide");
+      }
+    }
+    function toggleuploadpopup () {
+      let uploadpopup = document.getElementById("uploadpopup");
+      if (uploadpopup.classList.contains("hide")) {
+        uploadpopup.classList.toggle("show");
+      } else {
+        uploadpopup.classList.toggle("hide");
       }
     }
   </script>
