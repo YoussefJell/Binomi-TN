@@ -38,7 +38,7 @@ def profile_func(uid=None):
     my_user = storage.get(User, request.args.get(
         "uid", current_user.get_id()))
     if not my_user:
-        abort(404, 'Invalid Profile')
+        abort(404, 'Invalid Profile, Log in or Click on a User\'s image in the home page')
     form = UploadForm()
     if form.validate_on_submit() and request.form.get('submit') == 'Upload':
         filename = photos.save(form.photo.data)
