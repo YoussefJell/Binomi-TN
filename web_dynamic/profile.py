@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-from flask import Flask, Blueprint, render_template, request, flash, redirect, send_from_directory, url_for
+import uuid
+from flask import Flask, Blueprint, abort, render_template, request, flash, redirect, send_from_directory, url_for
 from models.location import Location
 from models.preference import Preference, user_preference
 from models.user import User
@@ -8,7 +9,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 from models import storage
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileRequired, FileAllowed
+from flask_wtf.file import FileField, FileRequired, FileAllowed, FileSize
 from wtforms import SubmitField
 profile = Blueprint('profile', __name__)
 
@@ -19,7 +20,8 @@ photos = UploadSet('photos', IMAGES)
 class UploadForm(FlaskForm):
     photo = FileField(
         validators=[
-            FileAllowed(photos, 'Only images are allowed')
+            FileAllowed(photos, 'Only images are allowed'),
+            FileSize(8000000, 0, 'Max file size is 8mb')
         ]
     )
     submit = SubmitField('Upload')
@@ -33,9 +35,12 @@ def get_file(filename):
 @profile.route('/profile', strict_slashes=False, methods=['GET', 'POST'])
 @profile.route('/profile/<uid>', strict_slashes=False, methods=['GET', 'POST'])
 def profile_func(uid=None):
-    my_user = storage.get(User, request.args.get("uid"))
+    my_user = storage.get(User, request.args.get(
+        "uid", current_user.get_id()))
+    if not my_user:
+        abort(404, 'Invalid Profile')
     form = UploadForm()
-    if form.validate_on_submit() and not request.form.get('first_name'):
+    if form.validate_on_submit() and request.form.get('submit') == 'Upload':
         filename = photos.save(form.photo.data)
         file_url = url_for('profile.get_file', filename=filename)
         setattr(my_user, 'image_url', file_url)
@@ -44,7 +49,7 @@ def profile_func(uid=None):
         file_url = None
     #----------------#
 
-    if request.method == 'POST' and not form.validate_on_submit():
+    if request.method == 'POST' and not request.form.get('submit'):
         my_user = storage.get(User, current_user.get_id())
         my_dict = {}
         my_dict["first_name"] = request.form.get('first_name')
@@ -86,4 +91,4 @@ def profile_func(uid=None):
 
     uid = request.args.get("uid")
     storage.reload()
-    return render_template('profile.html', prefs=prefs, locations=locations, uid=uid, user=my_user, current=current_user.get_id(), form=form, file_url=file_url)
+    return render_template('profile.html', cache_id=uuid.uuid4(), prefs=prefs, locations=locations, uid=uid, user=my_user, current=current_user.get_id(), form=form, file_url=file_url)
