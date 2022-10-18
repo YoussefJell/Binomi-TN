@@ -20,7 +20,8 @@ class User(UserMixin, BaseModel, Base):
         first_name = Column(String(128), nullable=False)
         last_name = Column(String(128), nullable=False)
         description = Column(String(1024), nullable=True)
-        image_url = Column(String(1024), nullable=True, default=None)
+        image_url = Column(String(1024), nullable=True,
+                           default='/uploads/default.png')
         location_id = Column(String(60), ForeignKey(
             'locations.id'), nullable=True)
         location_name = Column(String(128), nullable=True)
