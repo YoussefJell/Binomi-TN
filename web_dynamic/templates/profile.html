@@ -214,7 +214,8 @@
       {% endif %}
       <div class="userloc">Location: {{ user.location_name }}</div>
       {% if uid == current %}
-      <button class="editbutton" onclick="togglepopup(); fill_user_form('{{current_user.get_id()}}')">Edit</button>
+      <button class="editbutton"
+        onclick="togglepopup(); fill_user_form('{{current_user.get_id()}}'); fill_user_prefs('{{current_user.get_id()}}');">Edit</button>
       {% else %}
       {% endif %}
     </div>
@@ -253,30 +254,38 @@
     }
 
 
-    function fill_user_form(id){
+    function fill_user_form (id) {
       $.ajax({
-        url: 'http://127.0.0.1:5001/api/v1/users/'+id,
+        url: 'http://127.0.0.1:5001/api/v1/users/' + id,
         type: 'GET',
         dataType: 'json',
-        success: function(data) {
-            
-            data = JSON.parse(JSON.stringify(data))
+        success: function (data) {
 
-            document.getElementById("fname").value = data["first_name"];
-            document.getElementById("lname").value = data["last_name"];
-            document.getElementById("phone").value = data["phone"];
-            document.getElementById("budget").value = data["budget"];
-            document.getElementById("bio").value = data["description"];
-            document.getElementById('slct-location').value = data['location_id'];
-            document.getElementById('slct-sex').value = data['sex'];
+          data = JSON.parse(JSON.stringify(data))
 
-            
+          document.getElementById("fname").value = data["first_name"];
+          document.getElementById("lname").value = data["last_name"];
+          document.getElementById("phone").value = data["phone"];
+          document.getElementById("budget").value = data["budget"];
+          document.getElementById("bio").value = data["description"];
+          document.getElementById('slct-location').value = data['location_id'];
+          document.getElementById('slct-sex').value = data['sex'];
+
+
         }
-      });
-      
-      
-      
-    }
+      })
+    };
+    function fill_user_prefs (id) {
+      $.ajax({
+        url: 'http://127.0.0.1:5001/api/v1/users/' + id + '/preferences',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+          console.log(data)
+        }
+      })
+    };
+
   </script>
 </body>
 
