@@ -11,7 +11,7 @@ $(document).ready(function () {
           let users_content = [
             '<div class="card card--fixedWidth">',
             '<div class="Price">',
-            '<button class="cardProfileBtn" onclick="window.location.href=\'/profile?uid=' + result[i].id + '\'"></button>',
+            '<button class="cardProfileBtn" onclick="window.location.href=\'/profile?uid=' + result[i].id + '\'"><img src="' + result[i].image_url + '" /></button>',
             '<h6>' + result[i].first_name + ' ' + result[i].last_name + '</h6>',
             '</div>',
             '<div class="cardDescription">',
@@ -71,7 +71,7 @@ $(document).ready(function () {
             let users_content = [
               '<div class="card card--fixedWidth">',
               '<div class="Price">',
-              '<button class="cardProfileBtn" onclick="window.location.href=\'/profile?uid=' + result[i].id + '\'"></button>',
+              '<button class="cardProfileBtn" onclick="window.location.href=\'/profile?uid=' + result[i].id + '\'"><img src="' + result[i].image_url + '" /></button>',
               '<h6>' + result[i].first_name + ' ' + result[i].last_name + '</h6>',
               '</div>',
               '<div class="cardDescription">',
