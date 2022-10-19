@@ -221,72 +221,84 @@
     </div>
 
     <div class="bottom-section">
-      <div class="description"><span class="bold">Bio: </span>{{ user.description }}</div>
-      <div class="phone"><span class="bold">Phone: </span>{{ user.phone }}</div>
-      <div class="sex"><span class="bold">Sex: </span>{{ user.sex }}</div>
-      <div class="budget"><span class="bold">Budget: </span>{{ user.budget }}TND</div>
+      <div class="info-grid-container">
+        <div class="info-grid-item "><span class="bold">Bio: </span>{{ user.description }}</div>
+        <div class="info-grid-item "><span class="bold">Phone: </span>{{ user.phone }}</div>
+        <div class="info-grid-item "><span class="bold">Sex: </span>{{ user.sex }}</div>
+        <div class="info-grid-item "><span class="bold">Budget: </span>{{ user.budget }}TND</div>
+      </div>
+      <div class="bold preferences">Preferences: </div>
+      <main class="cards">
+        {% for pref in user.preferences %}
+        <article class="card">
+          <div class="text">
+            <h5>{{pref.name}}</h5>
+          </div>
+        </article>
+        {% endfor %}
+      </main>
+
     </div>
-  </div>
-  <footer>
-    <p>
-      Created with <i class="fa fa-heart"></i> Love
-      - Binomi
-    </p>
-  </footer>
+    <footer>
+      <p>
+        Created with <i class="fa fa-heart"></i> Love
+        - Binomi
+      </p>
+    </footer>
 
-  <script>
-    // When the user clicks on div, open the popup
-    function togglepopup () {
-      let popup = document.getElementById("popup");
-      if (popup.classList.contains("hide")) {
-        popup.classList.toggle("show");
-      } else {
-        popup.classList.toggle("hide");
-      }
-    }
-    function toggleuploadpopup () {
-      let uploadpopup = document.getElementById("uploadpopup");
-      if (uploadpopup.classList.contains("hide")) {
-        uploadpopup.classList.toggle("show");
-      } else {
-        uploadpopup.classList.toggle("hide");
-      }
-    }
-
-
-    function fill_user_form (id) {
-      $.ajax({
-        url: 'http://127.0.0.1:5001/api/v1/users/' + id,
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-
-          data = JSON.parse(JSON.stringify(data))
-
-          document.getElementById("fname").value = data["first_name"];
-          document.getElementById("lname").value = data["last_name"];
-          document.getElementById("phone").value = data["phone"];
-          document.getElementById("budget").value = data["budget"];
-          document.getElementById("bio").value = data["description"];
-          document.getElementById('slct-location').value = data['location_id'];
-          document.getElementById('slct-sex').value = data['sex'];
-
-
+    <script>
+      // When the user clicks on div, open the popup
+      function togglepopup () {
+        let popup = document.getElementById("popup");
+        if (popup.classList.contains("hide")) {
+          popup.classList.toggle("show");
+        } else {
+          popup.classList.toggle("hide");
         }
-      })
-    };
-    function fill_user_prefs (id) {
-      $.ajax({
-        url: 'http://127.0.0.1:5001/api/v1/users/' + id + '/preferences',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-          console.log(data)
+      }
+      function toggleuploadpopup () {
+        let uploadpopup = document.getElementById("uploadpopup");
+        if (uploadpopup.classList.contains("hide")) {
+          uploadpopup.classList.toggle("show");
+        } else {
+          uploadpopup.classList.toggle("hide");
         }
-      })
-    };
+      }
 
-  </script>
+
+      function fill_user_form (id) {
+        $.ajax({
+          url: 'http://127.0.0.1:5001/api/v1/users/' + id,
+          type: 'GET',
+          dataType: 'json',
+          success: function (data) {
+
+            data = JSON.parse(JSON.stringify(data))
+
+            document.getElementById("fname").value = data["first_name"];
+            document.getElementById("lname").value = data["last_name"];
+            document.getElementById("phone").value = data["phone"];
+            document.getElementById("budget").value = data["budget"];
+            document.getElementById("bio").value = data["description"];
+            document.getElementById('slct-location').value = data['location_id'];
+            document.getElementById('slct-sex').value = data['sex'];
+
+
+          }
+        })
+      };
+      function fill_user_prefs (id) {
+        $.ajax({
+          url: 'http://127.0.0.1:5001/api/v1/users/' + id + '/preferences',
+          type: 'GET',
+          dataType: 'json',
+          success: function (data) {
+            console.log(data)
+          }
+        })
+      };
+
+    </script>
 </body>
 
 </html>

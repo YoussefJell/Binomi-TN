@@ -36,7 +36,7 @@ body {
 
 .pic {
   margin-top: -80px;
-  z-index: 1;
+  z-index: 5;
   width: 150px;
   height: 150px;
   border: 2px solid #141414;
@@ -102,49 +102,9 @@ body {
 .bottom-section {
   background: #f1f1f1;
   display: flex;
-  padding-top: 100px;
-  padding-bottom: 350px;
-}
-
-
-.phone {
-  position: absolute;
-  font-size: 18px;
-  margin-top: -50px;
-  margin-left: 45%;
-  max-width: 300px;
-  max-height: 500px;
-  overflow: scroll;
-}
-
-.sex {
-  position: absolute;
-  font-size: 18px;
-  margin-top: 50px;
-  margin-left: 45%;
-  max-width: 300px;
-  max-height: 500px;
-  overflow: scroll;
-}
-
-.description {
-  position: absolute;
-  font-size: 20px;
-  margin-top: 50px;
-  margin-left: 25%;
-  max-width: 300px;
-  max-height: 200px;
-  overflow: scroll;
-}
-
-.budget {
-  position: absolute;
-  font-size: 18px;
-  margin-top: -50px;
-  margin-left: 25%;
-  max-width: 300px;
-  max-height: 500px;
-  overflow: scroll;
+  flex-flow: column;
+  padding-top: 50px;
+  padding-bottom: 150px;
 }
 
 .border {
@@ -191,4 +151,52 @@ body {
   display: flex;
   flex-wrap: row;
   width: 100;
+}
+
+.info-grid-container {
+  display: grid;
+  width: 400px;
+  grid-template-columns: auto auto;
+  gap: 25px;
+  margin-left: 30%;
+  margin-right: 15%;
+  margin-bottom: 40px;
+}
+
+.info-grid-item {
+  padding: 2px;
+  font-size: 18px;
+  table-layout: auto;
+  text-align: left;
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.preferences {
+  display: flex;
+  margin-top: 120px;
+  margin-left: 30%;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-top: 10px;
+  margin-left: 20%;
+  margin-right: 30%;
+
+}
+
+.card {
+  flex: auto;
+  margin: 4px;
+  border: 1px solid #ccc;
+  border-radius: 100px;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.text {
+  text-justify: auto;
+  font-size: small;
 }
