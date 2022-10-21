@@ -63,6 +63,7 @@ def profile_func(uid=None):
         if curr_loc:
             my_dict["location_name"] = curr_loc.name
         preferences = request.form.getlist('preferences')
+        dont_delete = ("first_name", "last_name", "sex", "location_id")
 
         # removing the deselected preferences
         for pref_user in my_user.preferences:
@@ -70,7 +71,6 @@ def profile_func(uid=None):
                 my_user.preferences.remove(pref_user)
                 pref_user.users.remove(my_user)
                 pref_user.save()
-
         # populate the many to many "user_preference" table
         for pref_id in preferences:
             pref_obj = storage.get(Preference, pref_id)
@@ -80,7 +80,8 @@ def profile_func(uid=None):
                 pref_obj.save()
 
         for key, value in my_dict.items():
-            setattr(my_user, key, value)
+            if (key in dont_delete) and (len(value) is not 0):
+                setattr(my_user, key, value)
         my_user.save()
 
     locations = storage.all(Location).values()
