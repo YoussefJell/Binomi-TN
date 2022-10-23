@@ -72,13 +72,13 @@ The website contains profiles of people who are looking for roOmmates, you can n
 You have to create an account to post your profile.
 
 Account Creation
-![login](/repository/static/images/login.jpg)
+![login](https://imgur.com/a/bnPNUxK)
 
 Create a profile
-![profile](/repository/static/images/profile.jpg)
+![profile](https://imgur.com/a/ayzYxj4)
 
 Browsing profiles filtered by location
-![browsing](/repository/static/images/lookup.jpg)
+![browsing](https://imgur.com/a/qrd26Lz)
 
 
 
