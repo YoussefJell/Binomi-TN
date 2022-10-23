@@ -75,10 +75,10 @@ Account Creation
 ![login](https://i.imgur.com/FchvvDq.png)
 
 Create a profile
-![profile](https://i.imgur.com/4Lqgeoq.png)
+![profile](https://i.imgur.com/PQEiqfp.png)
 
 Browsing profiles filtered by location
-![browsing](https://i.imgur.com/PQEiqfp.png)
+![browsing](https://i.imgur.com/4Lqgeoq.png)
 
 
 
