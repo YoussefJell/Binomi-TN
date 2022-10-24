@@ -1,7 +1,7 @@
 # Binomi
 
-The hustle that comes with looking for a roomMate is a situation that many people can relate to.
-You want to find a roommate with whom you can get along with, and it's a difficult process to find one.
+The hassle that comes with looking for a Room-mate is a situation that many people can relate to.
+You want to find a Room-mate with whom you can get along with, and it's a difficult process to find one.
 
 Binomi is working on solving this problem. It is a platform that connects people that are looking for a roommate based on their preferences.
 
@@ -72,13 +72,13 @@ The website contains profiles of people who are looking for roOmmates, you can n
 You have to create an account to post your profile.
 
 Account Creation
-![login](/repository/static/images/login.jpg)
+![login](https://i.imgur.com/FchvvDq.png)
 
 Create a profile
-![profile](/repository/static/images/profile.jpg)
+![profile](https://i.imgur.com/PQEiqfp.png)
 
 Browsing profiles filtered by location
-![browsing](/repository/static/images/lookup.jpg)
+![browsing](https://i.imgur.com/4Lqgeoq.png)
 
 
 
